@@ -36,7 +36,7 @@
 	
 	<spring:message code="activity.title" var="titleHeader" />
 	<display:column title="${titleHeader}" sortable="false">
-		<a href="workProgramme/activity/manager/display.do?activityId=${row.id}"><jstl:out
+		<a href="manager/workProgramme/activity/display.do?activityId=${row.id}"><jstl:out
 				value="${row.title}" /></a>
 	</display:column>
 	
@@ -62,7 +62,7 @@
 	<security:authorize access="hasRole('MANAGER')">
 		<jstl:if test="${(fn:contains(mylist, row)) && (row.endDate ge today)}">
 			<display:column>
-				<a href="workProgramme/activity/manager/edit.do?activityId=${row.id}"><spring:message code="activity.edit"/></a>
+				<a href="manager/workProgramme/activity/edit.do?activityId=${row.id}"><spring:message code="activity.edit"/></a>
 			</display:column>
 		</jstl:if>
 	</security:authorize>
@@ -74,7 +74,7 @@
 <security:authorize access="hasRole('MANAGER')">
 	<div>
 		<jstl:if test="${thiswk.endDate ge today}">
-		<a href="workProgramme/activity/manager/create.do"> <spring:message
+		<a href="manager/workProgramme/activity/create.do"> <spring:message
 				code="activity.create" />
 		</a>
 		</jstl:if>

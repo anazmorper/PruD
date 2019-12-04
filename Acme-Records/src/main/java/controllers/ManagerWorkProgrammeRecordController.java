@@ -40,7 +40,7 @@ import domain.Record;
 import domain.WorkProgramme;
 
 @Controller
-@RequestMapping("/workProgramme/record/manager")
+@RequestMapping("/manager/workProgramme/record")
 public class ManagerWorkProgrammeRecordController extends AbstractController {
 
 	// Services ---------------------------------
@@ -118,7 +118,7 @@ public class ManagerWorkProgrammeRecordController extends AbstractController {
 		}else
 			try {
 				this.recordService.saveWorkProgramme(record, this.workProgramme);
-				result = new ModelAndView("redirect:/workProgramme/manager/listMyWorkProgrammes.do");
+				result = new ModelAndView("redirect:/manager/workProgramme/listMyWorkProgrammes.do");
 			} catch (final Throwable oops) {
 				oops.printStackTrace();
 				result = this.createEditModelAndView(record,
@@ -161,7 +161,7 @@ public class ManagerWorkProgrammeRecordController extends AbstractController {
 		}else
 			try {
 				this.recordService.saveWorkProgramme(record, this.workProgramme);
-				result = new ModelAndView("redirect:/workProgramme/manager/listMyWorkProgrammes.do");
+				result = new ModelAndView("redirect:/manager/workProgramme/listMyWorkProgrammes.do");
 			} catch (final Throwable oops) {
 				oops.printStackTrace();
 				result = this.createEditModelAndView2(record,
@@ -182,7 +182,7 @@ public class ManagerWorkProgrammeRecordController extends AbstractController {
 //		result = new ModelAndView("record/list");
 //		result.addObject("records", records);
 //
-//		result.addObject("requestURI", "/workProgramme/record/manager/list.do");
+//		result.addObject("requestURI", "/manager/workProgramme/record/list.do");
 //		return result;
 //	}
 	
@@ -202,7 +202,7 @@ public class ManagerWorkProgrammeRecordController extends AbstractController {
 		}
 		r = workProgramme.getRecords();
 		result = new ModelAndView("record/listByWorkProgramme");
-		result.addObject("requestURI", "/workProgramme/record/manager/listbyworkprogramme.do");
+		result.addObject("requestURI", "/manager/workProgramme/record/listbyworkprogramme.do");
 		result.addObject("records", r);
 		result.addObject("endDateWP", workProgramme.getEndDate());
 		result.addObject("mylist", this.recordService.recordsByManager(this.managerService.findOneByPrincipal()));
@@ -225,7 +225,7 @@ public class ManagerWorkProgrammeRecordController extends AbstractController {
 		record = this.recordService.findOne(recordId);
 		this.recordService.deleteWorkProgramme(record, this.workProgramme);
 
-		result = new ModelAndView("redirect:/workProgramme/manager/listMyWorkProgrammes.do");
+		result = new ModelAndView("redirect:/manager/workProgramme/listMyWorkProgrammes.do");
 
 		return result;
 	}
@@ -248,7 +248,7 @@ public class ManagerWorkProgrammeRecordController extends AbstractController {
 			canDelete = true;
 		}
 		result = new ModelAndView("record/display");
-		result.addObject("requestURI", "/workProgramme/record/manager/display.do");
+		result.addObject("requestURI", "/manager/workProgramme/record/display.do");
 		result.addObject("record", record);
 		result.addObject("canDelete", canDelete);
 		return result;
@@ -276,7 +276,7 @@ public class ManagerWorkProgrammeRecordController extends AbstractController {
 		Collection<String> types = new ArrayList<String>(adminConfig.getTypes());
 		
 		result = new ModelAndView("record/editcreate");
-		requestURI = "/workProgramme/record/manager/editcreate.do";
+		requestURI = "/manager/workProgramme/record/editcreate.do";
 		result.addObject("record", record);
 		result.addObject("message", message);
 		result.addObject("requestURI", requestURI);
@@ -309,7 +309,7 @@ public class ManagerWorkProgrammeRecordController extends AbstractController {
 		Collection<String> types = new ArrayList<String>(adminConfig.getTypes());
 		
 		result = new ModelAndView("record/edit");
-		requestURI = "/workProgramme/record/manager/edit.do";
+		requestURI = "/manager/workProgramme/record/edit.do";
 		result.addObject("record", record);
 		result.addObject("message", message);
 		result.addObject("requestURI", requestURI);

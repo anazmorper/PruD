@@ -30,7 +30,7 @@ import services.ManagerService;
 import domain.Manager;
 
 @Controller
-@RequestMapping("/artist/manager")
+@RequestMapping("/manager")
 public class ManagerCreateController extends AbstractController {
 
 	// Services ---------------------------------
@@ -105,7 +105,7 @@ public class ManagerCreateController extends AbstractController {
 					userAccount = super.hashSavePassword(b.getUserAccount());
 					b.setUserAccount(userAccount);
 					this.managerService.saveC(b);
-					result = new ModelAndView("redirect:../../welcome/index.do");
+					result = new ModelAndView("redirect:../welcome/index.do");
 				} catch (final Throwable oops) {
 					oops.printStackTrace();
 					if (usernameEquals){

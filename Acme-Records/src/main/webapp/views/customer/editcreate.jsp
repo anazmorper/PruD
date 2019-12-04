@@ -33,7 +33,7 @@
 	<acme:textbox code="actor.surname" path="surname" />
 	<br />
 	
-	<acme:textbox code="actor.photo" path="photo" placeholder="http:" />
+	<acme:textbox code="actor.photo" path="photo" placeholder="https://" />
 	<br />
 	
 	<acme:textbox code="actor.email" path="email" />

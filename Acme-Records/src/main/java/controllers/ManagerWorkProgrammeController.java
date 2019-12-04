@@ -30,21 +30,19 @@ import org.springframework.web.servlet.ModelAndView;
 import security.LoginService;
 import services.ManagerService;
 import services.WorkProgrammeService;
-import domain.Activity;
 import domain.Manager;
 import domain.WorkProgramme;
 
 @Controller
-@RequestMapping("/workProgramme/manager")
+@RequestMapping("/manager/workProgramme")
 public class ManagerWorkProgrammeController extends AbstractController {
 
 	// Services ---------------------------------
 	@Autowired
-	private ManagerService			managerService;
+	private ManagerService managerService;
 
 	@Autowired
-	private WorkProgrammeService	workProgrammeService;
-
+	private WorkProgrammeService workProgrammeService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -82,8 +80,8 @@ public class ManagerWorkProgrammeController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/editcreate", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final WorkProgramme workProgramme, final BindingResult binding) {
-
+	public ModelAndView save(@Valid final WorkProgramme workProgramme,
+			final BindingResult binding) {
 		ModelAndView result;
 		boolean errorDate = false;
 
@@ -94,22 +92,28 @@ public class ManagerWorkProgrammeController extends AbstractController {
 			result = this.createEditModelAndView(workProgramme);
 		else
 			try {
-
-				if (!workProgramme.getStartDate().after(new Date()) || !workProgramme.getEndDate().after(new Date()) || !workProgramme.getEndDate().after(workProgramme.getStartDate()))
+				
+				if (!workProgramme.getStartDate().after(new Date()) ||
+						!workProgramme.getEndDate().after(new Date()) ||
+						!workProgramme.getEndDate().after(workProgramme.getStartDate())){
 					errorDate = true;
-
+				}
+				
 				this.workProgrammeService.save(workProgramme);
-				result = new ModelAndView("redirect:/workProgramme/manager/listMyWorkProgrammes.do");
+				result = new ModelAndView("redirect:/manager/workProgramme/listMyWorkProgrammes.do");
 			} catch (final Throwable oops) {
 				oops.printStackTrace();
-				if (errorDate)
-					result = this.createEditModelAndView(workProgramme, "workProgramme.commit.error.date");
-
-				else
-					result = this.createEditModelAndView(workProgramme, "workProgramme.commit.error");
+				if (errorDate){
+					result = this.createEditModelAndView(workProgramme,
+							"workProgramme.commit.error.date");
+				}else {
+					result = this.createEditModelAndView(workProgramme,
+						"workProgramme.commit.error");
+				}
 			}
 		return result;
 	}
+	
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public ModelAndView edit(@RequestParam final int workProgrammeId) {
 		ModelAndView result;
@@ -125,11 +129,10 @@ public class ManagerWorkProgrammeController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save2(@Valid final WorkProgramme workProgramme, final BindingResult binding) {
+	public ModelAndView save2(@Valid final WorkProgramme workProgramme,
+			final BindingResult binding) {
 		ModelAndView result;
 		boolean errorDate = false;
-		final Collection<Activity> activities = workProgramme.getActivities();
-		boolean errorActivity = false;
 
 		for (final ObjectError oe : binding.getAllErrors())
 			System.out.println(oe);
@@ -138,55 +141,53 @@ public class ManagerWorkProgrammeController extends AbstractController {
 			result = this.createEditModelAndView2(workProgramme);
 		else
 			try {
-				if (!workProgramme.getStartDate().after(new Date()) || !workProgramme.getEndDate().after(new Date()) || !workProgramme.getEndDate().after(workProgramme.getStartDate()))
+				if (!workProgramme.getStartDate().after(new Date()) ||
+						!workProgramme.getEndDate().after(new Date()) ||
+						!workProgramme.getEndDate().after(workProgramme.getStartDate())){
 					errorDate = true;
-
-				for (final Activity activity : activities)
-					if (activity.getStartDate().after(workProgramme.getEndDate()) || activity.getStartDate().before(workProgramme.getStartDate()) || activity.getEndDate().after(workProgramme.getEndDate())
-						|| activity.getEndDate().before(workProgramme.getStartDate()))
-						errorActivity = true;
-				Assert.isTrue(!errorActivity);
-
+				}
+				
 				this.workProgrammeService.save(workProgramme);
-				result = new ModelAndView("redirect:/workProgramme/manager/listMyWorkProgrammes.do");
+				result = new ModelAndView("redirect:/manager/workProgramme/listMyWorkProgrammes.do");
 			} catch (final Throwable oops) {
 				oops.printStackTrace();
-				if (errorDate)
-					result = this.createEditModelAndView2(workProgramme, "workProgramme.commit.error.date");
-				if (errorActivity)
-					result = this.createEditModelAndView(workProgramme, "workProgramme.commit.error.activity");
-				else
-					result = this.createEditModelAndView2(workProgramme, "workProgramme.commit.error");
+				if (errorDate){
+					result = this.createEditModelAndView2(workProgramme,
+							"workProgramme.commit.error.date");
+				}else {
+					result = this.createEditModelAndView2(workProgramme,
+						"workProgramme.commit.error");
+				}
 			}
 		return result;
 	}
 
 	// Listing ----------------------------------------------------------------
 
-	//	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	//	public ModelAndView list() {
-	//		ModelAndView result;
-	//		Collection<WorkProgramme> workProgrammes;
-	//		Manager manager = this.managerService.findByUserAccount(LoginService.getPrincipal());
-	//		workProgrammes = this.workProgrammeService.findAll();
-	//		result = new ModelAndView("workProgramme/list");
-	//		
-	//		result.addObject("workProgrammes", workProgrammes);
-	//		result.addObject("mylist", manager.getWorkProgrammes());
-	//
-	//		result.addObject("requestURI", "/workProgramme/manager/list.do");
-	//		return result;
-	//	}
-
+//	@RequestMapping(value = "/list", method = RequestMethod.GET)
+//	public ModelAndView list() {
+//		ModelAndView result;
+//		Collection<WorkProgramme> workProgrammes;
+//		Manager manager = this.managerService.findByUserAccount(LoginService.getPrincipal());
+//		workProgrammes = this.workProgrammeService.findAll();
+//		result = new ModelAndView("workProgramme/list");
+//		
+//		result.addObject("workProgrammes", workProgrammes);
+//		result.addObject("mylist", manager.getWorkProgrammes());
+//
+//		result.addObject("requestURI", "/manager/workProgramme/list.do");
+//		return result;
+//	}
+	
 	@RequestMapping(value = "/listMyWorkProgrammes", method = RequestMethod.GET)
 	public ModelAndView listMyWorkProgrammes() {
 		ModelAndView result;
 		Collection<WorkProgramme> workProgrammes;
 		workProgrammes = this.managerService.findOneByPrincipal().getWorkProgrammes();
 		result = new ModelAndView("workProgramme/listMyWorkProgrammes");
-		result.addObject("workProgrammes", workProgrammes);
+		result.addObject("workProgrammes", workProgrammes);	
 
-		result.addObject("requestURI", "/workProgramme/manager/listMyWorkProgrammes.do");
+		result.addObject("requestURI", "/manager/workProgramme/listMyWorkProgrammes.do");
 		return result;
 	}
 
@@ -201,7 +202,7 @@ public class ManagerWorkProgrammeController extends AbstractController {
 		this.managerService.checkPrincipal();
 		workProgramme = this.workProgrammeService.findOne(workProgrammeId);
 		this.workProgrammeService.delete(workProgramme);
-		result = new ModelAndView("redirect:/workProgramme/manager/listMyWorkProgrammes.do");
+		result = new ModelAndView("redirect:/manager/workProgramme/listMyWorkProgrammes.do");
 
 		return result;
 	}
@@ -215,15 +216,15 @@ public class ManagerWorkProgrammeController extends AbstractController {
 		this.managerService.checkPrincipal();
 		workProgramme = this.workProgrammeService.findOne(workProgrammeId);
 		Boolean canDelete = false;
-		final Manager manager = this.managerService.findByUserAccount(LoginService.getPrincipal());
+		Manager manager = this.managerService.findByUserAccount(LoginService.getPrincipal());
 		Assert.isTrue(manager.getWorkProgrammes().contains(workProgramme));
-		if (manager.getWorkProgrammes().contains(workProgramme))
+		if(manager.getWorkProgrammes().contains(workProgramme))
 			canDelete = true;
-		final Locale locale = LocaleContextHolder.getLocale();
-		final String language = locale.getLanguage();
+		Locale locale = LocaleContextHolder.getLocale();
+		String language = locale.getLanguage();
 
 		result = new ModelAndView("workProgramme/display");
-		result.addObject("requestURI", "/workProgramme/manager/display.do");
+		result.addObject("requestURI", "/manager/workProgramme/display.do");
 		result.addObject("workProgramme", workProgramme);
 		result.addObject("language", language);
 		result.addObject("canDelete", canDelete);
@@ -234,7 +235,8 @@ public class ManagerWorkProgrammeController extends AbstractController {
 	// Ancilliary methods
 	// -----------------------------------------------------------
 
-	private ModelAndView createEditModelAndView(final WorkProgramme workProgramme) {
+	private ModelAndView createEditModelAndView(
+			final WorkProgramme workProgramme) {
 		ModelAndView result;
 
 		result = this.createEditModelAndView(workProgramme, null);
@@ -242,20 +244,22 @@ public class ManagerWorkProgrammeController extends AbstractController {
 		return result;
 	}
 
-	private ModelAndView createEditModelAndView(final WorkProgramme workProgramme, final String message) {
+	private ModelAndView createEditModelAndView(
+			final WorkProgramme workProgramme, final String message) {
 		ModelAndView result;
 		String requestURI;
 
 		result = new ModelAndView("workProgramme/editcreate");
-		requestURI = "/workProgramme/manager/editcreate.do";
+		requestURI = "/manager/workProgramme/editcreate.do";
 		result.addObject("workProgramme", workProgramme);
 		result.addObject("message", message);
 		result.addObject("requestURI", requestURI);
 
 		return result;
 	}
-
-	private ModelAndView createEditModelAndView2(final WorkProgramme workProgramme) {
+	
+	private ModelAndView createEditModelAndView2(
+			final WorkProgramme workProgramme) {
 		ModelAndView result;
 
 		result = this.createEditModelAndView2(workProgramme, null);
@@ -263,12 +267,13 @@ public class ManagerWorkProgrammeController extends AbstractController {
 		return result;
 	}
 
-	private ModelAndView createEditModelAndView2(final WorkProgramme workProgramme, final String message) {
+	private ModelAndView createEditModelAndView2(
+			final WorkProgramme workProgramme, final String message) {
 		ModelAndView result;
 		String requestURI;
 
 		result = new ModelAndView("workProgramme/edit");
-		requestURI = "/workProgramme/manager/edit.do";
+		requestURI = "/manager/workProgramme/edit.do";
 		result.addObject("workProgramme", workProgramme);
 		result.addObject("message", message);
 		result.addObject("requestURI", requestURI);

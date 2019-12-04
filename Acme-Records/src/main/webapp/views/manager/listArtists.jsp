@@ -74,7 +74,7 @@
 
 <%-- <security:authorize access="hasRole('MANAGER')">
 	<div>
-		<a href="record/manager/create.do"> <spring:message
+		<a href="manager/record/create.do"> <spring:message
 				code="record.create" />
 		</a>
 	</div>

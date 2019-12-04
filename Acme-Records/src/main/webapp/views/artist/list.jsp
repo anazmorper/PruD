@@ -52,7 +52,7 @@
 		
 		<display:column>
 		<jstl:if test="${row.finalMode=='false'}">
-			<a href="record/manager/edit.do?recordId=${row.id}"><spring:message code="record.edit"/></a>
+			<a href="manager/record/edit.do?recordId=${row.id}"><spring:message code="record.edit"/></a>
 		</jstl:if>
 		</display:column>
 		
@@ -66,7 +66,7 @@
 
 <%-- <security:authorize access="hasRole('MANAGER')">
 	<div>
-		<a href="record/manager/create.do"> <spring:message
+		<a href="manager/record/create.do"> <spring:message
 				code="record.create" />
 		</a>
 	</div>

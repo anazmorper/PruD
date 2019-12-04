@@ -27,6 +27,7 @@
 					<li class="arrow"></li>				
 					<li><a href="administrator/dashboard.do"><spring:message code="master.page.admin.dashboard" /></a></li> 				
 					<li><a href="administrator/downloadCSV.do"><spring:message code="master.page.author.export" /></a></li>
+					<li><a href="administrator/setter/list.do"><spring:message code="master.page.customer.setter" /></a></li>
 				</ul>
 			</li>
 			<li><a class="fNiv"><spring:message	code="master.page.message" /></a>
@@ -68,7 +69,7 @@
 		</security:authorize>
 		
 		<security:authorize access="hasRole('MANAGER')">
-				<li><a href="artist/manager/downloadCSV.do"><spring:message code="master.page.customer.export" /></a></li>
+				<li><a href="manager/downloadCSV.do"><spring:message code="master.page.customer.export" /></a></li>
 				<li><a class="fNiv"><spring:message	code="master.page.message" /></a>
 				<ul>
 					<li class="arrow"></li>				
@@ -78,9 +79,9 @@
 			</li>
 			<li><a class="fNiv" href="record/list.do"><spring:message code="master.page.record.list"/></a></li>
 			<li><a class="fNiv" href="artist/list.do"><spring:message code="master.page.artist.list"/></a></li>
-			<li><a class="fNiv" href="artist/manager/listMyArtists.do"><spring:message code="master.page.artist.listbyactor"/></a></li>
-<%-- 			<li><a class="fNiv" href="workProgramme/manager/list.do"><spring:message code="master.page.workProgramme.list"/></a></li>
- --%>		<li><a class="fNiv" href="workProgramme/manager/listMyWorkProgrammes.do"><spring:message code="master.page.workProgramme.listMyWorkProgrammes"/></a></li>
+			<li><a class="fNiv" href="manager/listMyArtists.do"><spring:message code="master.page.artist.listbyactor"/></a></li>
+<%-- 			<li><a class="fNiv" href="manager/workProgramme/list.do"><spring:message code="master.page.workProgramme.list"/></a></li>
+ --%>		<li><a class="fNiv" href="manager/workProgramme/listMyWorkProgrammes.do"><spring:message code="master.page.workProgramme.listMyWorkProgrammes"/></a></li>
 			
 		</security:authorize>
 		
@@ -89,7 +90,7 @@
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 			<li><a class="fNiv" href="customer/create.do"><spring:message code="master.page.create" /></a></li>
-			<li><a class="fNiv" href="artist/manager/create.do"><spring:message code="master.page.createb" /></a></li>
+			<li><a class="fNiv" href="manager/create.do"><spring:message code="master.page.createb" /></a></li>
 			<li><a class="fNiv" href="record/search.do"><spring:message code="master.page.record.search"/></a></li>
 			<li><a class="fNiv" href="record/list.do"><spring:message code="master.page.record.list"/></a></li>
 			<li><a class="fNiv" href="artist/list.do"><spring:message code="master.page.artist.list"/></a></li>

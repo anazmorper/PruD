@@ -39,7 +39,7 @@ import domain.Manager;
 import domain.WorkProgramme;
 
 @Controller
-@RequestMapping("/workProgramme/activity/manager")
+@RequestMapping("/manager/workProgramme/activity")
 public class ManagerWorkProgrammeActivityController extends AbstractController {
 
 	// Services ---------------------------------
@@ -84,7 +84,7 @@ public class ManagerWorkProgrammeActivityController extends AbstractController {
 		String requestURI;
 		this.managerService.checkPrincipal();
 		activity = this.activityService.findOne(activityId);
-		requestURI = "/workProgramme/activity/manager/editcreate.do";
+		requestURI = "/manager/workProgramme/activity/editcreate.do";
 		result = this.createEditModelAndView(activity);
 		result.addObject("requestURI", requestURI);
 		return result;
@@ -115,7 +115,7 @@ public class ManagerWorkProgrammeActivityController extends AbstractController {
 				}
 				
 				this.activityService.save(activity, this.workProgramme);
-				result = new ModelAndView("redirect:/workProgramme/manager/listMyWorkProgrammes.do");
+				result = new ModelAndView("redirect:/manager/workProgramme/listMyWorkProgrammes.do");
 			} catch (final Throwable oops) {
 				oops.printStackTrace();
 				if (errorDate){
@@ -138,7 +138,7 @@ public class ManagerWorkProgrammeActivityController extends AbstractController {
 		activity = this.activityService.findOne(activityId);
 		Assert.isTrue(this.activityService.activitiesByManager(this.managerService.findOneByPrincipal()).contains(activity)
 				&& this.workProgrammeService.WorkProgrammeByActivity(activity).getEndDate().after(new Date()));
-		requestURI = "/workProgramme/activity/manager/edit.do";
+		requestURI = "/manager/workProgramme/activity/edit.do";
 		result = this.createEditModelAndView2(activity);
 		result.addObject("requestURI", requestURI);
 		return result;
@@ -169,7 +169,7 @@ public class ManagerWorkProgrammeActivityController extends AbstractController {
 				}
 				
 				this.activityService.save(activity, this.workProgramme);
-				result = new ModelAndView("redirect:/workProgramme/manager/listMyWorkProgrammes.do");
+				result = new ModelAndView("redirect:/manager/workProgramme/listMyWorkProgrammes.do");
 			} catch (final Throwable oops) {
 				oops.printStackTrace();
 				if (errorDate){
@@ -194,7 +194,7 @@ public class ManagerWorkProgrammeActivityController extends AbstractController {
 //		result = new ModelAndView("activity/list");
 //		result.addObject("activities", activities);
 //
-//		result.addObject("requestURI", "/workProgramme/activity/manager/list.do");
+//		result.addObject("requestURI", "/manager/workProgramme/activity/list.do");
 //		return result;
 //	}
 	
@@ -208,7 +208,7 @@ public class ManagerWorkProgrammeActivityController extends AbstractController {
 		Assert.isTrue(this.managerService.findOneByPrincipal().getWorkProgrammes().contains(workProgramme));
 		r = workProgramme.getActivities();
 		result = new ModelAndView("activity/list");
-		result.addObject("requestURI", "/workProgramme/activity/manager/listbyrecordaut.do");
+		result.addObject("requestURI", "/manager/workProgramme/activity/listbyrecordaut.do");
 		result.addObject("activities", r);
 		result.addObject("thiswk", workProgramme);
 		result.addObject("mylist", this.activityService.activitiesByManager(this.managerService.findOneByPrincipal()));
@@ -229,7 +229,7 @@ public class ManagerWorkProgrammeActivityController extends AbstractController {
 		activity = this.activityService.findOne(activityId);
 		this.activityService.delete(activity, workProgramme);
 
-		result = new ModelAndView("redirect:/workProgramme/manager/listMyWorkProgrammes.do");
+		result = new ModelAndView("redirect:/manager/workProgramme/listMyWorkProgrammes.do");
 
 		return result;
 	}
@@ -252,7 +252,7 @@ public class ManagerWorkProgrammeActivityController extends AbstractController {
 		String language = locale.getLanguage();
 
 		result = new ModelAndView("activity/display");
-		result.addObject("requestURI", "/workProgramme/activity/manager/display.do");
+		result.addObject("requestURI", "/manager/workProgramme/activity/display.do");
 		result.addObject("activity", activity);
 		result.addObject("language", language);
 		result.addObject("canDelete", canDelete);
@@ -282,7 +282,7 @@ public class ManagerWorkProgrammeActivityController extends AbstractController {
 		Collection<String> status = new ArrayList<String>(adminConfig.getStatus());
 
 		result = new ModelAndView("activity/editcreate");
-		requestURI = "/workProgramme/activity/manager/editcreate.do";
+		requestURI = "/manager/workProgramme/activity/editcreate.do";
 		result.addObject("activity", activity);
 		result.addObject("status", status);
 		result.addObject("message", message);
@@ -309,7 +309,7 @@ public class ManagerWorkProgrammeActivityController extends AbstractController {
 		Collection<String> status = new ArrayList<String>(adminConfig.getStatus());
 
 		result = new ModelAndView("activity/edit");
-		requestURI = "/workProgramme/activity/manager/edit.do";
+		requestURI = "/manager/workProgramme/activity/edit.do";
 		result.addObject("activity", activity);
 		result.addObject("status", status);
 		result.addObject("message", message);

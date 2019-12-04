@@ -1,16 +1,8 @@
 
 package services;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +16,6 @@ import security.Authority;
 import security.LoginService;
 import security.UserAccount;
 import security.UserAccountService;
-import domain.Actor;
 import domain.Customer;
 
 @Service
@@ -44,9 +35,6 @@ public class CustomerService {
 	
 	@Autowired
 	private AdministratorService		administratorService;
-	
-	@Autowired
-	private AdminConfigService		adminConfigService;
 	
 
 
@@ -208,5 +196,7 @@ public class CustomerService {
   		}
   		return result;
   	}
+  	
+	
   	
 }

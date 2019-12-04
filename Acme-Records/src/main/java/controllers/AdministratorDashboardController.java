@@ -12,9 +12,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import domain.Manager;
 import domain.Record;
+import services.CustomerService;
 import services.ManagerService;
 import services.PurchaseService;
 import services.RecordService;
+import services.SetterService;
 import services.WorkProgrammeService;
 
 
@@ -43,6 +45,12 @@ public class AdministratorDashboardController extends AbstractController {
 	@Autowired
 	private ManagerService	managerService;
 	
+	@Autowired
+	private CustomerService	customerService;
+	
+	@Autowired
+	private SetterService setterService;
+	
 
 	//Displaying----------------------
 
@@ -62,9 +70,12 @@ public class AdministratorDashboardController extends AbstractController {
 		Record findTopRecord = this.recordService.findTopRecord();
 		Manager findTopManager = this.managerService.findTopManager();
 		Collection<Record> findTop3RecordsByMoney = this.recordService.findTop3RecordsByMoney();
-
-
 		
+		Double[] findAvgStddevOfTheNumOfSettersPublishedPerRecord = this.setterService.findAvgStddevOfTheNumOfSettersPublishedPerRecord();
+		Double findRatOfSetterPublished = this.setterService.findRatOfSetterPublished();
+		Double findRatOfSetterUnpublished = this.setterService.findRatOfSetterUnpublished();
+
+
 		result.addObject("avgMinMaxStRecordByWorkProgramme", avgMinMaxStRecordByWorkProgramme);
 		result.addObject("avgMinMaxStRecordPrice", avgMinMaxStRecordPrice);
 		result.addObject("avgMinMaxStWorkProgrammeByManager", avgMinMaxStWorkProgrammeByManager);
@@ -72,7 +83,10 @@ public class AdministratorDashboardController extends AbstractController {
 		result.addObject("findTop3RecordsByPurchase", findTop3RecordsByPurchase);
 		result.addObject("findTopRecord", findTopRecord);
 		result.addObject("findTopManager", findTopManager);
-		result.addObject("findTop3RecordsByMoney", findTop3RecordsByMoney);
+		result.addObject("findTop3RecordsByMoney", findTop3RecordsByMoney);		
+		result.addObject("findAvgStddevOfTheNumOfSettersPublishedPerRecord", findAvgStddevOfTheNumOfSettersPublishedPerRecord);
+		result.addObject("findRatOfSetterPublished", findRatOfSetterPublished);
+		result.addObject("findRatOfSetterUnpublished", findRatOfSetterUnpublished);
 		
 		return result;
 	}

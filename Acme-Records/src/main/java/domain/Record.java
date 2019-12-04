@@ -8,6 +8,7 @@ import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
@@ -138,6 +139,18 @@ public class Record extends DomainEntity {
 	}
 	public void setArtist(final Artist artist) {
 		this.artist = artist;
+	}
+	
+	// Control check
+	private Collection<Setter> setters;
+
+	@OneToMany(cascade = { CascadeType.MERGE, CascadeType.REMOVE }, fetch = FetchType.EAGER)
+	public Collection<Setter> getSetters() {
+		return this.setters;
+	}
+
+	public void setSetters(final Collection<Setter> setters) {
+		this.setters = setters;
 	}
 
 }

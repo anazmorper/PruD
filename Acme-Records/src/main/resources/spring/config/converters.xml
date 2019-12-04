@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ * converters.xml
+ *
+ * Copyright (C) 2019 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd		
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd		
+	">
+
+	<util:list id="converters">
+ 	<bean class="converters.ActorToStringConverter" />
+	<bean class="converters.ManagerToStringConverter" />
+	<bean class="converters.CustomerToStringConverter" />
+	<bean class="converters.AuthorityToStringConverter" />
+	<bean class="converters.UserAccountToStringConverter" /> 
+	<bean class="converters.AdministratorToStringConverter" />
+	<bean class="converters.AdminConfigToStringConverter" />
+	<bean class="converters.AttachmentStringConverter" />
+	<bean class="converters.RecordToStringConverter" />
+	<bean class="converters.CreditCardToStringConverter" />
+	<bean class="converters.PurchaseToStringConverter" />
+	<bean class="converters.WorkProgrammeToStringConverter" />
+	<bean class="converters.ActivityToStringConverter" />
+	<bean class="converters.ArtistToStringConverter" />
+
+	
+	<bean class="converters.StringToActorConverter" />
+	<bean class="converters.StringToManagerConverter" />
+	<bean class="converters.StringToCustomerConverter" />
+	<bean class="converters.StringToAuthorityConverter" /> 
+	<bean class="converters.StringToUserAccountConverter" /> 
+	<bean class="converters.StringToAdministratorConverter" /> 
+	<bean class="converters.StringToAdminConfigConverter" />   
+	<bean class="converters.StringToAttachmentConverter" />
+	<bean class="converters.StringToRecordConverter" />
+	<bean class="converters.StringToCreditCardConverter" />
+	<bean class="converters.StringToPurchaseConverter" />
+	<bean class="converters.StringToWorkProgrammeConverter" />
+	<bean class="converters.StringToActivityConverter" />
+	<bean class="converters.StringToArtistConverter" />
+	</util:list>
+	
+</beans>

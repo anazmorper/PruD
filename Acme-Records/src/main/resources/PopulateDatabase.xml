@@ -1,0 +1,1430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- * PopulateDatabase.xml * * Copyright (C) 2019 Universidad de Sevilla 
+	* * The use of this project is hereby constrained to the conditions of the 
+	* TDG Licence, a copy of which you may download from * http://www.tdg-seville.info/License.html -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+
+
+
+	<!-- User accounts -->
+
+	<bean id="adminConfig" class="domain.AdminConfig">
+		<property name="defaultCountryCode" value="+34" />
+		<property name="banner" value="https://i.ibb.co/pXtYNCK/acme-records.png" />
+		<property name="welcomeMessageEnglish" value="Welcome to Acme Records! Your record pardise" />
+		<property name="welcomeMessageSpanish"
+			value="¡Bienvenidos a Acme Records! El paraíso de la buena música" />
+		<property name="maxNumberFinder" value="10" />
+		<property name="defaultTopicsEnglish">
+			<list>
+				<value>INQUIRY</value>
+				<value>MESSAGE</value>
+				<value>COMPLAINT</value>
+				<value>BROADCAST</value>
+				<value>OTHER</value>
+			</list>
+		</property>
+		<property name="creditCardNames">
+			<list>
+				<value>VISA</value>
+				<value>MASTER</value>
+				<value>DINNERS</value>
+				<value>AMEX</value>
+			</list>
+		</property>
+		<property name="defaultTopicsSpanish">
+			<list>
+				<value>INVESTIGACION</value>
+				<value>MENSAJE</value>
+				<value>QUEJA</value>
+				<value>EMISION</value>
+				<value>OTRO</value>
+			</list>
+		</property>
+		<property name="status">
+			<list>
+				<value>TODO</value>
+				<value>ONGOING</value>
+				<value>FINISHED</value>
+			</list>
+		</property>
+		<property name="types">
+			<list>
+				<value>VINYL</value>
+				<value>VIDEO</value>
+				<value>SINGLE</value>
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- Admin -->
+	<bean id="userAccount1" class="security.UserAccount">
+		<property name="username" value="admin" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+		<!-- <property name="active" value="true" /> -->
+	</bean>
+
+
+	<!-- UA Managers -->
+	<bean id="userAccount2" class="security.UserAccount">
+		<property name="username" value="manager1" />
+		<property name="password" value="c240642ddef994358c96da82c0361a58" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MANAGER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount3" class="security.UserAccount">
+		<property name="username" value="manager2" />
+		<property name="password" value="8df5127cd164b5bc2d2b78410a7eea0c" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MANAGER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount4" class="security.UserAccount">
+		<property name="username" value="manager3" />
+		<property name="password" value="2d3a5db4a2a9717b43698520a8de57d0" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MANAGER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount5" class="security.UserAccount">
+		<property name="username" value="manager4" />
+		<property name="password" value="e1ec6fc941af3ba79a4ac5242dd39735" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MANAGER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="userAccount11" class="security.UserAccount">
+		<property name="username" value="manager5" />
+		<property name="password" value="029cb1d27c0b9c551703ccba2591c334" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MANAGER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount12" class="security.UserAccount">
+		<property name="username" value="manager6" />
+		<property name="password" value="46bae9ead851e0f288529e6322f4fd77" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MANAGER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+
+
+	<!-- UA Authors -->
+	<bean id="userAccount6" class="security.UserAccount">
+		<property name="username" value="customer1" />
+		<property name="password" value="ffbc4675f864e0e9aab8bdf7a0437010" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount7" class="security.UserAccount">
+		<property name="username" value="customer2" />
+		<property name="password" value="5ce4d191fd14ac85a1469fb8c29b7a7b" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount8" class="security.UserAccount">
+		<property name="username" value="customer3" />
+		<property name="password" value="033f7f6121501ae98285ad77f216d5e7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount9" class="security.UserAccount">
+		<property name="username" value="customer4" />
+		<property name="password" value="55feb130be438e686ad6a80d12dd8f44" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount10" class="security.UserAccount">
+		<property name="username" value="customer5" />
+		<property name="password" value="9e8486cdd435beda9a60806dd334d964" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount13" class="security.UserAccount">
+		<property name="username" value="customer6" />
+		<property name="password" value="dbaa8bd25e06cc641f5406027c026e8b" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- Admin -->
+	<bean id="admin" class="domain.Administrator">
+		<property name="name" value="Administrator" />
+		<property name="surname" value="Administrator" />
+		<property name="photo"
+			value="https://definicion.mx/wp-content/uploads/2014/04/persona.jpg" />
+		<property name="email" value="admin@mail.com" />
+		<property name="phoneNumber" value="910290322" />
+		<property name="address" value="Address AD" />
+		<property name="userAccount" ref="userAccount1" />
+		<property name="messages">
+			<list>
+				<ref bean="message3" />
+				<ref bean="message1" />
+				<ref bean="message2" />
+			</list>
+		</property>
+	</bean>
+
+
+
+	<!-- Manager -->
+	<bean id="manager1" class="domain.Manager">
+		<property name="name" value="Manager 1" />
+		<property name="surname" value="Surname manager 1" />
+		<property name="photo"
+			value="https://definicion.mx/wp-content/uploads/2014/04/persona.jpg" />
+		<property name="email" value="cc1@mail.com" />
+		<property name="phoneNumber" value="910290321" />
+		<property name="address" value="Address C 1" />
+		<property name="userAccount" ref="userAccount2" />
+		<property name="workProgrammes">
+			<list>
+				<ref bean="workProgramme1" />
+				<ref bean="workProgramme2" />
+				<ref bean="workProgramme3" />
+			</list>
+		</property>
+		<property name="artists">
+			<list>
+				<ref bean="artist1" />
+				<ref bean="artist2" />
+				<ref bean="artist3" />
+				<ref bean="artist7" />
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+				<ref bean="message1" />
+				<ref bean="message7" />
+				<ref bean="message8" />
+				<ref bean="message9" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="manager2" class="domain.Manager">
+		<property name="name" value="Manager 2" />
+		<property name="surname" value="Surname manager 2" />
+		<property name="photo"
+			value="https://definicion.mx/wp-content/uploads/2014/04/persona.jpg" />
+		<property name="email" value="cc2@mail.com" />
+		<property name="phoneNumber" value="910292321" />
+		<property name="address" value="Address C 2" />
+		<property name="userAccount" ref="userAccount3" />
+		<property name="workProgrammes">
+			<list>
+				<ref bean="workProgramme4" />
+			</list>
+		</property>
+		<property name="artists">
+			<list>
+				<ref bean="artist6" />
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+				<ref bean="message4" />
+				<ref bean="message5" />
+				<ref bean="message8" />
+				<ref bean="message9" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="manager3" class="domain.Manager">
+		<property name="name" value="Manager 3" />
+		<property name="surname" value="Surname manager 3" />
+		<property name="photo"
+			value="https://definicion.mx/wp-content/uploads/2014/04/persona.jpg" />
+		<property name="email" value="cc3@mail.com" />
+		<property name="phoneNumber" value="910290321" />
+		<property name="address" value="Address C 3" />
+		<property name="userAccount" ref="userAccount4" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+		<property name="workProgrammes">
+			<list>
+				<ref bean="workProgramme5" />
+			</list>
+		</property>
+		<property name="artists">
+			<list>
+				<ref bean="artist4" />
+				<ref bean="artist5" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="manager4" class="domain.Manager">
+		<property name="name" value="Manager 4" />
+		<property name="surname" value="Surname manager 4" />
+		<property name="photo"
+			value="https://definicion.mx/wp-content/uploads/2014/04/persona.jpg" />
+		<property name="email" value="cc4@mail.com" />
+		<property name="phoneNumber" value="910290421" />
+		<property name="address" value="Address C 4" />
+		<property name="userAccount" ref="userAccount5" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+		<property name="workProgrammes">
+			<list>
+			</list>
+		</property>
+		<property name="artists">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="manager5" class="domain.Manager">
+		<property name="name" value="Manager 5" />
+		<property name="surname" value="Surname manager 5" />
+		<property name="photo"
+			value="https://definicion.mx/wp-content/uploads/2014/04/persona.jpg" />
+		<property name="email" value="cc5@mail.com" />
+		<property name="phoneNumber" value="910290425" />
+		<property name="address" value="Address C 5" />
+		<property name="userAccount" ref="userAccount11" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+				<property name="workProgrammes">
+			<list>
+			</list>
+		</property>
+		<property name="artists">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="manager6" class="domain.Manager">
+		<property name="name" value="Manager 6" />
+		<property name="surname" value="Surname manager 6" />
+		<property name="photo"
+			value="https://definicion.mx/wp-content/uploads/2014/04/persona.jpg" />
+		<property name="email" value="cc6@mail.com" />
+		<property name="phoneNumber" value="910290426" />
+		<property name="address" value="Address C 6" />
+		<property name="userAccount" ref="userAccount12" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+				<property name="workProgrammes">
+			<list>
+			</list>
+		</property>
+		<property name="artists">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Customer -->
+	<bean id="customer1" class="domain.Customer">
+		<property name="name" value="Tania" />
+		<property name="surname" value="Salguero Álvarez" />
+		<property name="photo"
+			value="https://definicion.mx/wp-content/uploads/2014/04/persona.jpg" />
+		<property name="email" value="author@mail.com" />
+		<property name="phoneNumber" value="910290321" />
+		<property name="address" value="Address calle 1" />
+		<property name="userAccount" ref="userAccount6" />
+		<property name="purchases">
+			<list>
+				<ref bean="purchase1" />
+				<ref bean="purchase2" />
+			</list>
+		</property>
+		<property name="creditCard" ref="creditCard1" />
+		<property name="messages">
+			<list>
+				<ref bean="message3" />
+				<ref bean="message7" />
+				<ref bean="message4" />
+				<ref bean="message5" />
+				<ref bean="message6" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="customer2" class="domain.Customer">
+		<property name="name" value="Dami" />
+		<property name="surname" value="Serrano Fernandez" />
+		<property name="photo"
+			value="https://definicion.mx/wp-content/uploads/2014/04/persona.jpg" />
+		<property name="email" value="author2@mail.com" />
+		<property name="phoneNumber" value="910292321" />
+		<property name="address" value="Address calle 2" />
+		<property name="userAccount" ref="userAccount7" />
+		<property name="purchases">
+			<list>
+				<ref bean="purchase3" />
+			</list>
+		</property>
+		<property name="creditCard">
+			<null />
+		</property>
+		<property name="messages">
+			<list>
+				<ref bean="message2" />
+				<ref bean="message6" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="customer3" class="domain.Customer">
+		<property name="name" value="Carlos" />
+		<property name="surname" value="Lozano Tore" />
+		<property name="photo"
+			value="https://definicion.mx/wp-content/uploads/2014/04/persona.jpg" />
+		<property name="email" value="author3@mail.com" />
+		<property name="phoneNumber" value="910230321" />
+		<property name="address" value="Address calle 3" />
+		<property name="userAccount" ref="userAccount8" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+		<property name="purchases">
+			<list>
+				<ref bean="purchase4" />
+			</list>
+		</property>
+		<property name="creditCard" ref="creditCard3" />
+	</bean>
+
+	<bean id="customer4" class="domain.Customer">
+		<property name="name" value="Gonzalo" />
+		<property name="surname" value="Lopez Heredia" />
+		<property name="photo"
+			value="https://definicion.mx/wp-content/uploads/2014/04/persona.jpg" />
+		<property name="email" value="author4@mail.com" />
+		<property name="phoneNumber" value="910290821" />
+		<property name="address" value="Address calle 4" />
+		<property name="userAccount" ref="userAccount9" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+		<property name="purchases">
+			<list>
+				<ref bean="purchase5" />
+			</list>
+		</property>
+		<property name="creditCard">
+			<null />
+		</property>
+	</bean>
+
+	<bean id="customer5" class="domain.Customer">
+		<property name="name" value="David" />
+		<property name="surname" value="Cuevas Carrasco" />
+		<property name="photo"
+			value="https://definicion.mx/wp-content/uploads/2014/04/persona.jpg" />
+		<property name="email" value="author5@mail.com" />
+		<property name="phoneNumber" value="910590821" />
+		<property name="address" value="Address calle 5" />
+		<property name="userAccount" ref="userAccount10" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+		<property name="purchases">
+			<list>
+				<ref bean="purchase6" />
+			</list>
+		</property>
+		<property name="creditCard">
+			<null />
+		</property>
+	</bean>
+
+	<bean id="customer6" class="domain.Customer">
+		<property name="name" value="Carlos " />
+		<property name="surname" value="Salguero Álvarez" />
+		<property name="photo"
+			value="https://definicion.mx/wp-content/uploads/2014/04/persona.jpg" />
+		<property name="email" value="authorr@mail.com" />
+		<property name="phoneNumber" value="910290328" />
+		<property name="address" value="Address calle 2" />
+		<property name="userAccount" ref="userAccount13" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+		<property name="purchases">
+			<list>
+				<ref bean="purchase8" />
+			</list>
+		</property>
+		<property name="creditCard">
+			<null />
+		</property>
+	</bean>
+
+	<!-- Breache -->
+	<bean id="breache1" class="domain.Breache">
+		<property name="title" value="brec1" />
+		<property name="description" value="descr 1" />
+	</bean>
+
+	<bean id="breache2" class="domain.Breache">
+		<property name="title" value="brec2" />
+		<property name="description" value="descr 2" />
+	</bean>
+
+	<bean id="breache3" class="domain.Breache">
+		<property name="title" value="brec3" />
+		<property name="description" value="descr 3" />
+	</bean>
+
+	<bean id="breache4" class="domain.Breache">
+		<property name="title" value="brec4" />
+		<property name="description" value="descr 4" />
+	</bean>
+
+	<!-- Attachment -->
+	<bean id="attachment1" class="domain.Attachment">
+		<property name="url" value="https://www.at1.es" />
+	</bean>
+
+	<bean id="attachment2" class="domain.Attachment">
+		<property name="url" value="https://www.at2.es" />
+	</bean>
+
+	<bean id="attachment3" class="domain.Attachment">
+		<property name="url" value="https://www.at3.es" />
+	</bean>
+
+	<bean id="attachment4" class="domain.Attachment">
+		<property name="url" value="https://www.at4.es" />
+	</bean>
+
+	<bean id="attachment5" class="domain.Attachment">
+		<property name="url" value="https://www.at5.es" />
+	</bean>
+
+	<bean id="attachment6" class="domain.Attachment">
+		<property name="url" value="https://www.at6.es" />
+	</bean>
+
+	<bean id="attachment7" class="domain.Attachment">
+		<property name="url" value="https://www.at7.es" />
+	</bean>
+
+	<bean id="attachment8" class="domain.Attachment">
+		<property name="url" value="https://www.at8.es" />
+	</bean>
+
+	<bean id="attachment9" class="domain.Attachment">
+		<property name="url" value="https://www.at9.es" />
+	</bean>
+
+	<bean id="attachment10" class="domain.Attachment">
+		<property name="url" value="https://www.at10.es" />
+	</bean>
+
+	<bean id="attachment11" class="domain.Attachment">
+		<property name="url" value="https://www.at11.es" />
+	</bean>
+
+	<bean id="attachment12" class="domain.Attachment">
+		<property name="url" value="https://www.at12.es" />
+	</bean>
+
+	<bean id="attachment13" class="domain.Attachment">
+		<property name="url" value="https://www.at13.es" />
+	</bean>
+
+	<bean id="attachment14" class="domain.Attachment">
+		<property name="url" value="https://www.at14.es" />
+	</bean>
+
+	<bean id="attachment15" class="domain.Attachment">
+		<property name="url" value="https://www.at15.es" />
+	</bean>
+
+	<bean id="attachment16" class="domain.Attachment">
+		<property name="url" value="https://www.at16.es" />
+	</bean>
+
+	<bean id="attachment17" class="domain.Attachment">
+		<property name="url" value="https://www.at17.es" />
+	</bean>
+
+	<bean id="attachment18" class="domain.Attachment">
+		<property name="url" value="https://www.at18.es" />
+	</bean>
+
+
+	<!-- CreditCard -->
+
+	<bean id="creditCard1" class="domain.CreditCard">
+		<property name="holderName" value="Gonzalo López Heredia" />
+		<property name="brandName" value="Unicaja" />
+		<property name="number" value="4388576018410707" />
+		<property name="expirationMonth" value="03" />
+		<property name="expirationYear" value="20" />
+		<property name="cvvCode" value="002" />
+	</bean>
+
+	<bean id="creditCard2" class="domain.CreditCard">
+		<property name="holderName" value="Carlos Lozano" />
+		<property name="brandName" value="Santander" />
+		<property name="number" value="4388576018410707" />
+		<property name="expirationMonth" value="05" />
+		<property name="expirationYear" value="21" />
+		<property name="cvvCode" value="103" />
+	</bean>
+
+	<bean id="creditCard3" class="domain.CreditCard">
+		<property name="holderName" value="Tania Salguero" />
+		<property name="brandName" value="BBVA" />
+		<property name="number" value="4388576018410707" />
+		<property name="expirationMonth" value="06" />
+		<property name="expirationYear" value="22" />
+		<property name="cvvCode" value="655" />
+	</bean>
+
+	<bean id="creditCard4" class="domain.CreditCard">
+		<property name="holderName" value="Damián Martín" />
+		<property name="brandName" value="Bankia" />
+		<property name="number" value="4388576018410707" />
+		<property name="expirationMonth" value="04" />
+		<property name="expirationYear" value="22" />
+		<property name="cvvCode" value="876" />
+	</bean>
+
+	<bean id="creditCard5" class="domain.CreditCard">
+		<property name="holderName" value="David Rocha" />
+		<property name="brandName" value="La Caixa" />
+		<property name="number" value="4388576018410707" />
+		<property name="expirationMonth" value="09" />
+		<property name="expirationYear" value="19" />
+		<property name="cvvCode" value="726" />
+	</bean>
+
+	<bean id="creditCard6" class="domain.CreditCard">
+		<property name="holderName" value="Guillermo Rodriguez" />
+		<property name="brandName" value="Bankia" />
+		<property name="number" value="4388576018410707" />
+		<property name="expirationMonth" value="06" />
+		<property name="expirationYear" value="20" />
+		<property name="cvvCode" value="721" />
+	</bean>
+
+	<bean id="creditCard7" class="domain.CreditCard">
+		<property name="holderName" value="Antonio Luna" />
+		<property name="brandName" value="Santander" />
+		<property name="number" value="4388576018410707" />
+		<property name="expirationMonth" value="09" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="714" />
+	</bean>
+
+	<bean id="creditCard8" class="domain.CreditCard">
+		<property name="holderName" value="Pablo Rodriguez" />
+		<property name="brandName" value="La Caixa" />
+		<property name="number" value="4388576018410707" />
+		<property name="expirationMonth" value="05" />
+		<property name="expirationYear" value="24" />
+		<property name="cvvCode" value="711" />
+	</bean>
+
+	<bean id="creditCard9" class="domain.CreditCard">
+		<property name="holderName" value="Rodrigo Moreno" />
+		<property name="brandName" value="Santander" />
+		<property name="number" value="4388576018410707" />
+		<property name="expirationMonth" value="01" />
+		<property name="expirationYear" value="22" />
+		<property name="cvvCode" value="705" />
+	</bean>
+
+	<bean id="creditCard10" class="domain.CreditCard">
+		<property name="holderName" value="Sergio Canales" />
+		<property name="brandName" value="BBVA" />
+		<property name="number" value="4388576018410707" />
+		<property name="expirationMonth" value="07" />
+		<property name="expirationYear" value="24" />
+		<property name="cvvCode" value="708" />
+	</bean>
+
+	<bean id="creditCard11" class="domain.CreditCard">
+		<property name="holderName" value="Pedro Lopez" />
+		<property name="brandName" value="BANKIA" />
+		<property name="number" value="5435887078071838" />
+		<property name="expirationMonth" value="05" />
+		<property name="expirationYear" value="24" />
+		<property name="cvvCode" value="709" />
+	</bean>
+
+	<bean id="creditCard12" class="domain.CreditCard">
+		<property name="holderName" value="Maria sanchez" />
+		<property name="brandName" value="BBVA" />
+		<property name="number" value="5387884700643488" />
+		<property name="expirationMonth" value="03" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="709" />
+	</bean>
+
+	<bean id="creditCard13" class="domain.CreditCard">
+		<property name="holderName" value="Sergio Perez" />
+		<property name="brandName" value="Santandres" />
+		<property name="number" value="5590669265015823" />
+		<property name="expirationMonth" value="04" />
+		<property name="expirationYear" value="25" />
+		<property name="cvvCode" value="703" />
+	</bean>
+
+
+	<bean id="creditCard14" class="domain.CreditCard">
+		<property name="holderName" value="David Perez" />
+		<property name="brandName" value="Santander" />
+		<property name="number" value="5590669265015823" />
+		<property name="expirationMonth" value="07" />
+		<property name="expirationYear" value="25" />
+		<property name="cvvCode" value="733" />
+	</bean>
+
+	<bean id="creditCard15" class="domain.CreditCard">
+		<property name="holderName" value="Maria Perez" />
+		<property name="brandName" value="Santander" />
+		<property name="number" value="5590669265015823" />
+		<property name="expirationMonth" value="07" />
+		<property name="expirationYear" value="24" />
+		<property name="cvvCode" value="854" />
+	</bean>
+
+	<bean id="creditCard16" class="domain.CreditCard">
+		<property name="holderName" value="Maria Dominguez" />
+		<property name="brandName" value="BBVA" />
+		<property name="number" value="5590669265015823" />
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="25" />
+		<property name="cvvCode" value="990" />
+	</bean>
+
+	<bean id="creditCard17" class="domain.CreditCard">
+		<property name="holderName" value="Dani Perez" />
+		<property name="brandName" value="CAIXA" />
+		<property name="number" value="5590669265015823" />
+		<property name="expirationMonth" value="12" />
+		<property name="expirationYear" value="22" />
+		<property name="cvvCode" value="154" />
+	</bean>
+
+
+
+	<!-- Record -->
+
+	<bean id="record1" class="domain.Record">
+		<property name="title" value="1016" />
+		<property name="ticker" value="19-ABCD-8590" />
+		<property name="coverPhoto"
+			value="https://i.blogs.es/ee2163/alfred/450_1000.jpg" />
+		<property name="retailPrice" value="1.10" />
+		<property name="lyrics" value="Camara y accion, sueños y dolor" />
+		<property name="attachments">
+			<list>
+				<ref bean="attachment1" />
+				<ref bean="attachment2" />
+			</list>
+		</property>
+		<property name="finalMode" value="true" />
+		<property name="type" value="SINGLE" />
+		<property name="artist" ref="artist1" />
+		<property name="purchases">
+			<list>
+				<ref bean="purchase1" />
+				<ref bean="purchase5" />
+				<ref bean="purchase6" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="record2" class="domain.Record">
+		<property name="title" value="Album uno" />
+		<property name="ticker" value="19-DHHG-1154" />
+		<property name="coverPhoto"
+			value="https://tumerchan.com/wp-content/uploads/2019/04/juancho-marques-album-uno-600x600.jpg" />
+		<property name="retailPrice" value="1.99" />
+		<property name="lyrics" value="Tiene el mar como unidad de medida" />
+		<property name="attachments">
+			<list>
+				<ref bean="attachment3" />
+				<ref bean="attachment4" />
+			</list>
+		</property>
+		<property name="finalMode" value="true" />
+		<property name="type" value="VINYL" />
+		<property name="artist" ref="artist2" />
+		<property name="purchases">
+			<list>
+				<ref bean="purchase2" />
+				<ref bean="purchase3" />
+				<ref bean="purchase4" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="record3" class="domain.Record">
+		<property name="title" value="Angel Caido" />
+		<property name="ticker" value="19-ZJLP-0083" />
+		<property name="coverPhoto"
+			value="https://m.media-amazon.com/images/I/71rvJV5ALFL._SS500_.jpg" />
+		<property name="retailPrice" value="1.99" />
+		<property name="lyrics"
+			value="Tal vez hoy nazca un ángel por el que ayer murió" />
+		<property name="attachments">
+			<list>
+				<ref bean="attachment5" />
+				<ref bean="attachment6" />
+			</list>
+		</property>
+		<property name="finalMode" value="false" />
+		<property name="type" value="SINGLE" />
+		<property name="artist" ref="artist3" />
+		<property name="purchases">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="record4" class="domain.Record">
+		<property name="title" value="Entre otros cien" />
+		<property name="ticker" value="19-HYQQ-1232" />
+		<property name="coverPhoto"
+			value="https://m.media-amazon.com/images/I/8112mJzMqtL._SS500_.jpg" />
+		<property name="retailPrice" value="2.99" />
+		<property name="lyrics"
+			value="Vengo caminando,pago un precio razonable por los actos" />
+		<property name="attachments">
+			<list>
+				<ref bean="attachment7" />
+				<ref bean="attachment8" />
+			</list>
+		</property>
+		<property name="finalMode" value="false" />
+		<property name="type" value="VIDEO" />
+		<property name="artist" ref="artist4" />
+		<property name="purchases">
+			<list>
+				
+			</list>
+		</property>
+	</bean>
+
+	<bean id="record5" class="domain.Record">
+		<property name="title" value="That's life" />
+		<property name="ticker" value="19-KGHT-4672" />
+		<property name="coverPhoto"
+			value="https://images-na.ssl-images-amazon.com/images/I/81Kv0icjoGL._SY355_.jpg" />
+		<property name="retailPrice" value="1.29" />
+		<property name="lyrics" value="That's life, that's all what people say" />
+		<property name="attachments">
+			<list>
+				<ref bean="attachment9" />
+			</list>
+		</property>
+		<property name="finalMode" value="false" />
+		<property name="type" value="VIDEO" />
+		<property name="artist" ref="artist5" />
+		<property name="purchases">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="record6" class="domain.Record">
+		<property name="title" value="Medusa" />
+		<property name="ticker" value="19-HMMZ-1473" />
+		<property name="coverPhoto"
+			value="https://img.europapress.es/fotoweb/fotonoticia_20191004183212_640.jpg" />
+		<property name="retailPrice" value="1.10" />
+		<property name="lyrics" value="Me cambia de lugar, te mata la curiosidad" />
+		<property name="attachments">
+			<list>
+				<ref bean="attachment10" />
+			</list>
+		</property>
+		<property name="finalMode" value="false" />
+		<property name="type" value="SINGLE" />
+		<property name="artist" ref="artist6" />
+		<property name="purchases">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="record7" class="domain.Record">
+		<property name="title" value="Once historias y un piano" />
+		<property name="ticker" value="19-AHGH-9548" />
+		<property name="coverPhoto"
+			value="https://m.media-amazon.com/images/I/71rPZ2sB61L._SS500_.jpg" />
+		<property name="retailPrice" value="11.99" />
+		<property name="lyrics"
+			value="Deje el valor perdido en escenarios, vi morir mis sueños vi como resucitaban" />
+		<property name="attachments">
+			<list>
+				<ref bean="attachment11" />
+			</list>
+		</property>
+		<property name="finalMode" value="false" />
+		<property name="type" value="VINYL" />
+		<property name="artist" ref="artist7" />
+		<property name="purchases">
+			<list>
+				<ref bean="purchase8" />
+			</list>
+		</property>
+	</bean>
+
+
+
+	<!-- Purchase -->
+
+	<bean id="purchase1" class="domain.Purchase">
+		<property name="moment" value="09/30/2019" />
+		<property name="creditCard">
+			<ref bean="creditCard1" />
+		</property>
+		<property name="customer">
+			<ref bean="customer1" />
+		</property>
+		<property name="record" ref="record1" />
+	</bean>
+
+	<bean id="purchase2" class="domain.Purchase">
+		<property name="moment" value="10/06/2019" />
+		<property name="creditCard">
+			<ref bean="creditCard1" />
+		</property>
+		<property name="customer">
+			<ref bean="customer1" />
+		</property>
+		<property name="record" ref="record2" />
+	</bean>
+
+	<bean id="purchase3" class="domain.Purchase">
+		<property name="moment" value="09/25/2019" />
+		<property name="creditCard">
+			<ref bean="creditCard2" />
+		</property>
+		<property name="customer">
+			<ref bean="customer2" />
+		</property>
+		<property name="record" ref="record2" />
+	</bean>
+
+	<bean id="purchase4" class="domain.Purchase">
+		<property name="moment" value="10/15/2019" />
+		<property name="creditCard">
+			<ref bean="creditCard3" />
+		</property>
+		<property name="customer">
+			<ref bean="customer3" />
+		</property>
+		<property name="record" ref="record2" />
+	</bean>
+
+	<bean id="purchase5" class="domain.Purchase">
+		<property name="moment" value="08/15/2019" />
+		<property name="creditCard">
+			<ref bean="creditCard4" />
+		</property>
+		<property name="customer">
+			<ref bean="customer4" />
+		</property>
+		<property name="record" ref="record1" />
+	</bean>
+
+	<bean id="purchase6" class="domain.Purchase">
+		<property name="moment" value="10/10/2019" />
+		<property name="creditCard">
+			<ref bean="creditCard5" />
+		</property>
+		<property name="customer">
+			<ref bean="customer5" />
+		</property>
+		<property name="record" ref="record1" />
+	</bean>
+
+
+	<bean id="purchase8" class="domain.Purchase">
+		<property name="moment" value="09/28/2019" />
+		<property name="creditCard">
+			<ref bean="creditCard6" />
+		</property>
+		<property name="customer">
+			<ref bean="customer6" />
+		</property>
+		<property name="record" ref="record7" />
+	</bean>
+
+	<!-- Artist -->
+
+
+	<bean id="artist1" class="domain.Artist">
+		<property name="name" value="Alfred Garcia" />
+		<property name="photo"
+			value="https://www.metropoliabierta.com/uploads/s1/47/63/21/alfred-garci-a-sala-barts_5_570x340.jpeg" />
+		<property name="biography"
+			value="Nacido en el Prat de Llobregat, musico y compositor" />
+		<property name="homePage" value="https://alfredgarcia.es/" />
+		<property name="record" ref="record1" />
+	</bean>
+
+	<bean id="artist2" class="domain.Artist">
+		<property name="name" value="Juancho Marques" />
+		<property name="photo"
+			value="https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2019/05/20/15583444697448.jpg" />
+		<property name="biography"
+			value="Artista sevillano, empezó en el grupo Suite Soprano hasta su separación" />
+		<property name="homePage" value="https://juanchomarques.com/" />
+		<property name="record" ref="record2" />
+	</bean>
+
+	<bean id="artist3" class="domain.Artist">
+		<property name="name" value="Malu" />
+		<property name="photo"
+			value="https://www.lavanguardia.com/r/GODO/LV/p6/WebSite/2019/10/12/Recortada/EuropaPress_2373681_MALU_SACA_SU_LADO_MAS_SOLIDARIO_Y_SUS_FANS_PODRAN_20190917082503-kyOI-U47921683022YBG-992x558@LaVanguardia-Web.jpg" />
+		<property name="biography"
+			value="Cantante, compositora e interprete española nacida en Madrid" />
+		<property name="homePage" value="https://www.maluweb.com/" />
+		<property name="record" ref="record3" />
+	</bean>
+
+	<bean id="artist4" class="domain.Artist">
+		<property name="name" value="Marta Soto" />
+		<property name="photo"
+			value="http://www.musictory.com/pictures/originali/105918.jpg" />
+		<property name="biography"
+			value="Compositora y cantante española llamada a ser una de las revelaciones de la década" />
+		<property name="homePage" value="http://martasotooficial.com/" />
+		<property name="record" ref="record4" />
+	</bean>
+
+	<bean id="artist5" class="domain.Artist">
+		<property name="name" value="Frank Sinatra" />
+		<property name="photo"
+			value="https://m.media-amazon.com/images/M/MV5BNTYzMzM2ODgzM15BMl5BanBnXkFtZTYwOTc5MzM2._V1_UY317_CR0,0,214,317_AL_.jpg" />
+		<property name="biography"
+			value="Cantante y actor estadounidense, considerada una de las figuras mas importantes del siglo XX" />
+		<property name="homePage" value="http://www.sinatra.com/" />
+		<property name="record" ref="record5" />
+	</bean>
+
+	<bean id="artist6" class="domain.Artist">
+		<property name="name" value="Alba Reche" />
+		<property name="photo"
+			value="https://okdiario.com/img/2019/07/22/alba-reche-655x368.jpg" />
+		<property name="biography"
+			value="Cantante y compositora española, conocida por su participacion en Operacion Triunfo" />
+		<property name="homePage"
+			value="https://twitter.com/albarecheot2018?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" />
+		<property name="record" ref="record6" />
+	</bean>
+
+	<bean id="artist7" class="domain.Artist">
+		<property name="name" value="Pablo Lopez" />
+		<property name="photo"
+			value="https://www.ciudadconalma.com/wp-content/uploads/2018/01/pablo-lopez-recorte-entrevista.jpg" />
+		<property name="biography"
+			value="Cantante y compositor español nacido en Malaga, que destaca por sus composiciones y su manejo del piano" />
+		<property name="homePage" value="https://www.pablolopezmusic.com/" />
+		<property name="record" ref="record7" />
+	</bean>
+
+
+	<!-- WorkProgramme -->
+
+	<bean id="workProgramme1" class="domain.WorkProgramme">
+		<property name="codeName" value="workProgramme1" />
+		<property name="startDate" value="2018/10/10" />
+		<property name="endDate" value="2019/11/11" />
+		<property name="records">
+			<list>
+				<ref bean="record1"/>
+				<ref bean="record2"/>
+				<ref bean="record7"/>
+			</list>
+		</property>
+		<property name="activities">
+			<list>
+				<ref bean="activity1"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="workProgramme2" class="domain.WorkProgramme">
+		<property name="codeName" value="workProgramme2" />
+		<property name="startDate" value="2020/11/25" />
+		<property name="endDate" value="2021/11/25" />
+		<property name="records">
+			<list>
+				<ref bean="record3"/>
+			</list>
+		</property>
+		<property name="activities">
+			<list>
+				<ref bean="activity2"/>
+				<ref bean="activity3"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="workProgramme3" class="domain.WorkProgramme">
+		<property name="codeName" value="workProgramme3" />
+		<property name="startDate" value="2020/10/25" />
+		<property name="endDate" value="2021/10/25" />
+		<property name="records">
+			<list>
+			</list>
+		</property>
+		<property name="activities">
+			<list>
+				<ref bean="activity4"/>
+				<ref bean="activity5"/>
+				<ref bean="activity6"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="workProgramme4" class="domain.WorkProgramme">
+		<property name="codeName" value="workProgramme4" />
+		<property name="startDate" value="2020/09/25" />
+		<property name="endDate" value="2021/09/25" />
+		<property name="records">
+			<list>
+				<ref bean="record6"/>
+			</list>
+		</property>
+		<property name="activities">
+			<list>
+				<ref bean="activity7"/>
+				<ref bean="activity8"/>
+				<ref bean="activity9"/>
+				<ref bean="activity10"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="workProgramme5" class="domain.WorkProgramme">
+		<property name="codeName" value="workProgramme5" />
+		<property name="startDate" value="2020/08/25" />
+		<property name="endDate" value="2021/08/25" />
+		<property name="records">
+			<list>
+				<ref bean="record4"/>
+				<ref bean="record5"/>
+			</list>
+		</property>
+		<property name="activities">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Activity -->
+
+	<bean id="activity1" class="domain.Activity">
+		<property name="title" value="Activity 1"></property>
+		<property name="description" value="Description Activity 1"></property>
+		<property name="startDate" value="11/11/2018"></property>
+		<property name="endDate" value="02/02/2019"></property>
+		<property name="status" value="TODO" />
+	</bean>
+	
+	<bean id="activity2" class="domain.Activity">
+		<property name="title" value="Activity 2"></property>
+		<property name="description" value="Description Activity 2"></property>
+		<property name="startDate" value="05/02/2021"></property>
+		<property name="endDate" value="07/07/2021"></property>
+		<property name="status" value="TODO" />
+	</bean>
+	
+	<bean id="activity3" class="domain.Activity">
+		<property name="title" value="Activity 3"></property>
+		<property name="description" value="Description Activity 3"></property>
+		<property name="startDate" value="05/03/2021"></property>
+		<property name="endDate" value="05/22/2021"></property>
+		<property name="status" value="ONGOING" />
+	</bean>
+	
+	<bean id="activity4" class="domain.Activity">
+		<property name="title" value="Activity 4"></property>
+		<property name="description" value="Description Activity 4"></property>
+		<property name="startDate" value="05/04/2021"></property>
+		<property name="endDate" value="05/23/2021"></property>
+		<property name="status" value="ONGOING" />
+	</bean>
+	
+	<bean id="activity5" class="domain.Activity">
+		<property name="title" value="Activity 5"></property>
+		<property name="description" value="Description Activity 5"></property>
+		<property name="startDate" value="06/01/2021"></property>
+		<property name="endDate" value="06/20/2021"></property>
+		<property name="status" value="ONGOING" />
+	</bean>
+	
+	<bean id="activity6" class="domain.Activity">
+		<property name="title" value="Activity 6"></property>
+		<property name="description" value="Description Activity 6"></property>
+		<property name="startDate" value="07/01/2021"></property>
+		<property name="endDate" value="07/20/2021"></property>
+		<property name="status" value="TODO" />
+	</bean>
+	
+	<bean id="activity7" class="domain.Activity">
+		<property name="title" value="Activity 7"></property>
+		<property name="description" value="Description Activity 7"></property>
+		<property name="startDate" value="08/01/2021"></property>
+		<property name="endDate" value="08/20/2021"></property>
+		<property name="status" value="ONGOING" />
+	</bean>
+	
+	<bean id="activity8" class="domain.Activity">
+		<property name="title" value="Activity 8"></property>
+		<property name="description" value="Description Activity 8"></property>
+		<property name="startDate" value="09/01/2021"></property>
+		<property name="endDate" value="09/20/2021"></property>
+		<property name="status" value="FINISHED" />
+	</bean>
+	
+	<bean id="activity9" class="domain.Activity">
+		<property name="title" value="Activity 9"></property>
+		<property name="description" value="Description Activity 9"></property>
+		<property name="startDate" value="08/15/2021"></property>
+		<property name="endDate" value="08/25/2021"></property>
+		<property name="status" value="FINISHED" />
+	</bean>
+	
+	<bean id="activity10" class="domain.Activity">
+		<property name="title" value="Activity 10"></property>
+		<property name="description" value="Description Activity 10"></property>
+		<property name="startDate" value="07/11/2021"></property>
+		<property name="endDate" value="07/26/2021"></property>
+		<property name="status" value="FINISHED" />
+	</bean>
+	
+	<!-- Messages -->
+
+	<bean id="message1" class="domain.Message">
+		<property name="moment" value="2018/10/01 15:20" />
+		<property name="subject" value="subject 1" />
+		<property name="body" value="body 1" />
+		<property name="topic" value="INQUIRY" />
+		<property name="priority" value="NEUTRAL" />
+		<property name="sender">
+			<ref bean="admin" />
+		</property>
+		<property name="recipient">
+			<ref bean="manager1" />
+		</property>
+	</bean>
+
+	<bean id="message2" class="domain.Message">
+		<property name="moment" value="2018/11/01 17:20" />
+		<property name="subject" value="subject 2" />
+		<property name="body" value="body 2" />
+		<property name="topic" value="OTHER" />
+		<property name="priority" value="NEUTRAL" />
+		<property name="sender">
+			<ref bean="admin" />
+		</property>
+		<property name="recipient">
+			<ref bean="customer2" />
+		</property>
+	</bean>
+
+	<bean id="message3" class="domain.Message">
+		<property name="moment" value="2018/09/01 19:20" />
+		<property name="subject" value="subject 3" />
+		<property name="body" value="body 3" />
+		<property name="topic" value="OTHER" />
+		<property name="priority" value="NEUTRAL" />
+		<property name="sender">
+			<ref bean="customer1" />
+		</property>
+		<property name="recipient">
+			<ref bean="admin" />
+		</property>
+	</bean>
+
+	<bean id="message4" class="domain.Message">
+		<property name="moment" value="2018/11/06 19:29" />
+		<property name="subject" value="subject 4" />
+		<property name="body" value="body 4" />
+		<property name="topic" value="COMPLAINT" />
+		<property name="priority" value="LOW" />
+		<property name="sender">
+			<ref bean="customer1" />
+		</property>
+		<property name="recipient">
+			<ref bean="manager2" />
+		</property>
+	</bean>
+
+	<bean id="message5" class="domain.Message">
+		<property name="moment" value="2018/11/07 19:50" />
+		<property name="subject" value="subject 5" />
+		<property name="body" value="body 5" />
+		<property name="topic" value="MESSAGE" />
+		<property name="priority" value="HIGH" />
+		<property name="sender">
+			<ref bean="manager2" />
+		</property>
+		<property name="recipient">
+			<ref bean="customer1" />
+		</property>
+	</bean>
+
+	<bean id="message6" class="domain.Message">
+		<property name="moment" value="2018/11/09 20:29" />
+		<property name="subject" value="subject 6" />
+		<property name="body" value="body 6" />
+		<property name="topic" value="COMPLAINT" />
+		<property name="priority" value="HIGH" />
+		<property name="sender">
+			<ref bean="customer2" />
+		</property>
+		<property name="recipient">
+			<ref bean="customer1" />
+		</property>
+	</bean>
+
+	<bean id="message7" class="domain.Message">
+		<property name="moment" value="2018/11/10 20:50" />
+		<property name="subject" value="subject 7" />
+		<property name="body" value="body 7" />
+		<property name="topic" value="OTHER" />
+		<property name="priority" value="LOW" />
+		<property name="sender">
+			<ref bean="customer1" />
+		</property>
+		<property name="recipient">
+			<ref bean="manager1" />
+		</property>
+	</bean>
+
+	<bean id="message8" class="domain.Message">
+		<property name="moment" value="2018/12/12 23:29" />
+		<property name="subject" value="subject 8" />
+		<property name="body" value="body 8" />
+		<property name="topic" value="COMPLAINT" />
+		<property name="priority" value="NEUTRAL" />
+		<property name="sender">
+			<ref bean="manager2" />
+		</property>
+		<property name="recipient">
+			<ref bean="manager1" />
+		</property>
+	</bean>
+
+	<bean id="message9" class="domain.Message">
+		<property name="moment" value="2018/12/12 23:50" />
+		<property name="subject" value="subject 9" />
+		<property name="body" value="body 9" />
+		<property name="topic" value="OTHER" />
+		<property name="priority" value="NEUTRAL" />
+		<property name="sender">
+			<ref bean="manager1" />
+		</property>
+		<property name="recipient">
+			<ref bean="manager2" />
+		</property>
+	</bean>
+
+</beans>

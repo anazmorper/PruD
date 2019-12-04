@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ * PopulateDatabase.xml
+ *
+ * Copyright (C) 2019 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+	
+	
+	<!-- User accounts -->
+
+	<bean id="userAccount1" class="security.UserAccount">
+		<property name="username" value="admin" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Other domain beans come here -->	
+	
+	<bean id="adminConfig" class="domain.AdminConfig">
+		<property name="defaultCountryCode" value="+34" />
+		<property name="banner" value="https://i.ibb.co/pXtYNCK/acme-records.png" />
+		<property name="welcomeMessageEnglish" value="Welcome to Acme Records! Your record pardise" />
+		<property name="welcomeMessageSpanish"
+			value="¡Bienvenidos a Acme Records! El paraíso de la buena música" />
+		<property name="maxNumberFinder" value="10" />
+		<property name="defaultTopicsEnglish">
+			<list>
+				<value>INQUIRY</value>
+				<value>MESSAGE</value>
+				<value>COMPLAINT</value>
+				<value>BROADCAST</value>
+				<value>OTHER</value>
+			</list>
+		</property>
+		<property name="creditCardNames">
+			<list>
+				<value>VISA</value>
+				<value>MASTER</value>
+				<value>DINNERS</value>
+				<value>AMEX</value>
+			</list>
+		</property>
+		<property name="defaultTopicsSpanish">
+			<list>
+				<value>INVESTIGACION</value>
+				<value>MENSAJE</value>
+				<value>QUEJA</value>
+				<value>EMISION</value>
+				<value>OTRO</value>
+			</list>
+		</property>
+		<property name="status">
+			<list>
+				<value>TODO</value>
+				<value>ONGOING</value>
+				<value>FINISHED</value>
+			</list>
+		</property>
+		<property name="types">
+			<list>
+				<value>VINYL</value>
+				<value>VIDEO</value>
+				<value>SINGLE</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="admin" class="domain.Administrator">
+		<property name="name" value="Administrator" />
+		<property name="surname" value="Administrator" />
+		<property name="photo"
+			value="https://definicion.mx/wp-content/uploads/2014/04/persona.jpg" />
+		<property name="email" value="admin@mail.com" />
+		<property name="phoneNumber" value="910290322" />
+		<property name="address" value="Address AD" />
+		<property name="userAccount" ref="userAccount1" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+  
+  <bean id="creditCard1" class="domain.CreditCard">
+		<property name="holderName" value="Gonzalo López Heredia" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4388576018410707" />
+		<property name="expirationMonth" value="03" />
+		<property name="expirationYear" value="20" />
+		<property name="cvvCode" value="102" />
+	</bean>
+	
+	<bean id="attachment1" class="domain.Attachment">
+  <property name="url" value="https://www.at1.es" />  
+  </bean>
+  
+</beans>

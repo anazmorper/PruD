@@ -79,6 +79,15 @@ public class AdministratorService {
 
 		return result;
 	}
+	
+	public void save2(final Administrator m) {
+		Assert.notNull(m);
+		Assert.hasText(m.getName());
+		Assert.hasText(m.getSurname());
+		Assert.hasText(m.getEmail());
+		Assert.notNull(m.getUserAccount());
+		this.administratorRepository.save(m);
+	}
 
 	public Administrator findOne(final int adminId) {
 		Administrator res;

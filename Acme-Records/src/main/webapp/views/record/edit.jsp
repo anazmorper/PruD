@@ -26,6 +26,7 @@
 	<form:hidden path="version" />
 	<form:hidden path="purchases" />
 	<form:hidden path="ticker" />
+	<form:hidden path="setters" />
 
 
 

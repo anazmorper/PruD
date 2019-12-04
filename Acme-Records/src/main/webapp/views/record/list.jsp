@@ -83,6 +83,21 @@
 	</security:authorize> 
 
 
+	<security:authorize access="hasRole('ADMIN')">	
+		<display:column>			
+					<a href="administrator/setter/create.do?recordId=${row.id}"> <spring:message
+					code="setter.create" /></a>
+		</display:column>
+	</security:authorize>
+	
+	<spring:message code="record.setters" var="settersHeader"/>
+	<display:column title="${settersHeader}">
+		<a href="setter/listByRecord.do?recordId=${row.id}">
+		<spring:message code="record.setters" />
+		</a>
+	</display:column>
+
+
 </display:table>
 
 <!-- Action links -->

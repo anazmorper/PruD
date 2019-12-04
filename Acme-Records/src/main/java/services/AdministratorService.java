@@ -17,7 +17,6 @@ import security.LoginService;
 import security.UserAccount;
 import security.UserAccountService;
 import domain.Administrator;
-import domain.Customer;
 
 @Service
 @Transactional
@@ -169,15 +168,6 @@ public class AdministratorService {
 		auth.setAuthority(Authority.ADMIN);
 
 		Assert.isTrue(!authorities.contains(auth));
-	}
-	
-	public void save2(final Administrator m) {
-		Assert.notNull(m);
-		Assert.hasText(m.getName());
-		Assert.hasText(m.getSurname());
-		Assert.hasText(m.getEmail());
-		Assert.notNull(m.getUserAccount());
-		this.administratorRepository.save(m);
 	}
 
 	

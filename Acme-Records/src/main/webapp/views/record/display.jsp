@@ -71,7 +71,7 @@
 	<security:authorize access="hasRole('MANAGER')">
 		<jstl:if test="${(canDelete == true) && (record.finalMode=='false')}">
 			<div>
-			  	<a href="manager/workProgramme/record/delete.do?recordId=${record.id}" onclick="javascript: return confirm('<spring:message code="record.confirm.delete" />')"><spring:message code="record.delete"/></a>  	
+			  	<a href="workProgramme/record/manager/delete.do?recordId=${record.id}" onclick="javascript: return confirm('<spring:message code="record.confirm.delete" />')"><spring:message code="record.delete"/></a>  	
 			</div>
 		</jstl:if>
 	</security:authorize>

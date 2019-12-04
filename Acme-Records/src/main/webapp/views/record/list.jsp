@@ -75,26 +75,13 @@
 		
 		<display:column>
 		<jstl:if test="${row.finalMode=='false'}">
-			<a href="manager/record/edit.do?recordId=${row.id}"><spring:message code="record.edit"/></a>
+			<a href="record/manager/edit.do?recordId=${row.id}"><spring:message code="record.edit"/></a>
 		</jstl:if>
 		</display:column>
 		
 		
-	</security:authorize>
-	
-	<security:authorize access="hasRole('ADMIN')">	
-		<display:column>			
-					<a href="administrator/setter/create.do?recordId=${row.id}"> <spring:message
-					code="setter.create" /></a>
-		</display:column>
-	</security:authorize>
-	
-	<spring:message code="record.setters" var="settersHeader"/>
-	<display:column title="${settersHeader}">
-		<a href="setter/listByRecord.do?recordId=${row.id}">
-		<spring:message code="record.setters" />
-		</a>
-	</display:column>
+	</security:authorize> 
+
 
 </display:table>
 

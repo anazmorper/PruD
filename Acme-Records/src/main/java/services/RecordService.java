@@ -106,26 +106,6 @@ public class RecordService {
 
 		return result;
 	}
-	
-	public Record save2(final Record record) {
-		Assert.notNull(record);
-		Assert.hasText(record.getTitle());
-		Assert.hasText(record.getTicker());
-		Assert.hasText(record.getCoverPhoto());
-		Assert.notNull(record.getRetailPrice());
-		Assert.hasText(record.getLyrics());
-		Assert.notNull(record.getAttachments());
-		Assert.notNull(record.isFinalMode());
-		Assert.hasText(record.getType());
-
-		Record result = null;
-
-		result = this.recordRepository.save(record);
-
-		return result;
-	}
-	
-	
 
 	public Record saveWorkProgramme(final Record record, final WorkProgramme workProgramme) {
 		Assert.notNull(this.managerService.findOneByPrincipal());

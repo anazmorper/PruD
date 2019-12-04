@@ -153,7 +153,7 @@ if (null!= a && a instanceof Customer) {
 		verdadero = true;
 	}
 	if ((null != artist.getRecord()&& artist.getRecord().isFinalMode()== true) 
-						|| verdadero == true){
+			|| verdadero == true){
 		res = artist;
 		
 	}
@@ -164,7 +164,7 @@ if (null!= a && a instanceof Customer) {
 		verdadero = true;
 	}
 	if ((null != artist.getRecord()&& artist.getRecord().isFinalMode()== true)
-			|| verdadero == true){
+		|| verdadero == true){
 		res = artist;
 		
 	}
@@ -226,7 +226,7 @@ if (null!= a && a instanceof Customer) {
 		else
 			try {
 				this.artistService.save(artist);
-				result = new ModelAndView("redirect:/manager/listMyArtists.do");
+				result = new ModelAndView("redirect:/artist/manager/listMyArtists.do");
 
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView2(artist, "purchase.commit.error");
@@ -245,7 +245,7 @@ if (null!= a && a instanceof Customer) {
 		else
 			try {
 				this.artistService.save(artist);
-				result = new ModelAndView("redirect:/manager/listMyArtists.do");
+				result = new ModelAndView("redirect:/artist/manager/listMyArtists.do");
 
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(artist, "purchase.commit.error");
@@ -267,7 +267,7 @@ if (null!= a && a instanceof Customer) {
 
 		artist = this.artistService.findOne(artistId);
 		this.artistService.delete(artist);
-		result = new ModelAndView("redirect:/manager/listMyArtists.do");
+		result = new ModelAndView("redirect:/artist/manager/listMyArtists.do");
 
 		return result;
 	}

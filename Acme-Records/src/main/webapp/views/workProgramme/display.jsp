@@ -56,7 +56,7 @@
 	<security:authorize access="hasRole('MANAGER')">
 		<jstl:if test="${canDelete == true}">
 			<div>
-				<a href="manager/workProgramme/delete.do?workProgrammeId=${workProgramme.id}" onclick="javascript: return confirm('<spring:message code="workProgramme.confirm.delete" />')"><spring:message code="workProgramme.delete"/></a>  	
+				<a href="workProgramme/manager/delete.do?workProgrammeId=${workProgramme.id}" onclick="javascript: return confirm('<spring:message code="workProgramme.confirm.delete" />')"><spring:message code="workProgramme.delete"/></a>  	
  			</div>
 		</jstl:if>
 	</security:authorize>

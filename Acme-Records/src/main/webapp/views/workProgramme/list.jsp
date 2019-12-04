@@ -36,7 +36,7 @@
 	
 	<spring:message code="workProgramme.codeName" var="codeNameHeader" />
 	<display:column title="${codeNameHeader}" sortable="false">
-		<a href="manager/workProgramme/display.do?workProgrammeId=${row.id}"><jstl:out
+		<a href="workProgramme/manager/display.do?workProgrammeId=${row.id}"><jstl:out
 				value="${row.codeName}" /></a>
 	</display:column>
 	
@@ -52,14 +52,14 @@
 	
 	<spring:message code="workProgramme.activities" var="activityHeader"/>
 	<display:column title="${activityHeader}">
-		<a href="manager/workProgramme/activity/listbyworkprogramme.do?workProgrammeId=${row.id}">
+		<a href="workProgramme/activity/manager/listbyworkprogramme.do?workProgrammeId=${row.id}">
 		<spring:message code="workProgramme.activities" />
 		</a>
 	</display:column> 
 	
 	<spring:message code="workProgramme.records" var="recordHeader"/>
 	<display:column title="${recordHeader}">
-		<a href="manager/workProgramme/record/listbyworkprogramme.do?workProgrammeId=${row.id}">
+		<a href="workProgramme/record/manager/listbyworkprogramme.do?workProgrammeId=${row.id}">
 		<spring:message code="workProgramme.records" />
 		</a>
 	</display:column>
@@ -74,7 +74,7 @@
 	<security:authorize access="hasRole('MANAGER')">
 		<jstl:if test="${(fn:contains(mylist, row)) && (row.endDate ge today)}">
 			<display:column>
-				<a href="manager/workProgramme/edit.do?workProgrammeId=${row.id}"><spring:message code="workProgramme.edit"/></a>
+				<a href="workProgramme/manager/edit.do?workProgrammeId=${row.id}"><spring:message code="workProgramme.edit"/></a>
 			</display:column>
 		</jstl:if>
 	</security:authorize>
@@ -85,7 +85,7 @@
 
 <security:authorize access="hasRole('MANAGER')">
 	<div>
-		<a href="manager/workProgramme/create.do"> <spring:message
+		<a href="workProgramme/manager/create.do"> <spring:message
 				code="workProgramme.create" />
 		</a>
 	</div>

@@ -43,7 +43,7 @@ import domain.Artist;
 import domain.Manager;
 
 @Controller
-@RequestMapping("/manager")
+@RequestMapping("/artist/manager")
 public class ManagerController extends AbstractController {
 
 	// Services ---------------------------------
@@ -112,7 +112,7 @@ public class ManagerController extends AbstractController {
 
 		manager = this.managerService.findOne(managerId);
 		principal = LoginService.getPrincipal();
-		requestURI = "manager/edit.do";
+		requestURI = "artist/manager/edit.do";
 		Assert.isTrue(manager.getUserAccount().equals(principal));
 
 		result = this.createEditModelAndView(manager);
@@ -157,7 +157,7 @@ public class ManagerController extends AbstractController {
 		result = new ModelAndView("manager/list");
 		result.addObject("managers", managers);
 
-		result.addObject("requestURI", "manager/list.do");
+		result.addObject("requestURI", "artist/manager/list.do");
 		return result;
 	}
 
@@ -208,7 +208,7 @@ public class ManagerController extends AbstractController {
 		Assert.isTrue(actorPrincipal.equals(manager));
 
 		result = new ModelAndView("manager/display");
-		result.addObject("requestURI", "/manager/display.do");
+		result.addObject("requestURI", "/artist/manager/display.do");
 		result.addObject("manager", manager);
 		return result;
 

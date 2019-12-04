@@ -20,21 +20,19 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form action="manager/workProgramme/record/edit.do"  modelAttribute="record">
+<form:form action="workProgramme/record/manager/edit.do"  modelAttribute="record">
 	
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="purchases" />
 	<form:hidden path="ticker" />
-	<form:hidden path="setters" />
-	
 
 
 
 	<acme:textbox code="record.title" path="title" />
 	<br />
 	
-	<acme:textbox code="record.coverPhoto" path="coverPhoto" placeholder="https://"  />
+	<acme:textbox code="record.coverPhoto" path="coverPhoto" placeholder="http:"  />
 	<br />
 	
 	<acme:textbox code="record.retailPrice" path="retailPrice" placeholder="Ex: 15.0"/>
@@ -46,7 +44,7 @@
 	<form:label path="attachments">
 			<spring:message code="record.attachments" />:
 	</form:label>
-	<form:input code="record.attachments" path="attachments" placeholder="http://"/>
+	<form:input code="record.attachments" path="attachments" placeholder="http:"/>
 	<br />
 	<br />
 	
@@ -76,7 +74,7 @@
 
 	<acme:submit name="save" code="workProgramme.save"/>
 
-	<acme:cancel url="manager/workProgramme/listMyWorkProgrammes.do" code="workProgramme.cancel" />
+	<acme:cancel url="workProgramme/manager/listMyWorkProgrammes.do" code="workProgramme.cancel" />
 	
 	<br/>
 		

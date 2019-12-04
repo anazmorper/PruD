@@ -25,10 +25,10 @@
 	<acme:textbox code="artist.biography" path="biography" />
 	<br />
 
-	<acme:textbox code="artist.photo" path="photo" placeholder="https://"/>
+	<acme:textbox code="artist.photo" path="photo" placeholder="http:"/>
 	<br />
 
-	<acme:textbox code="artist.homePage" path="homePage" placeholder="https://"/>
+	<acme:textbox code="artist.homePage" path="homePage" placeholder="http:"/>
 	<br />
 
 	<!-- Buttons -->
@@ -36,7 +36,7 @@
 
 	<acme:submit name="save" code="artist.save" />
 
-	<acme:cancel url="manager/listMyArtists.do"
+	<acme:cancel url="artist/manager/listMyArtists.do"
 		code="artist.cancel" />
 
 	<br />

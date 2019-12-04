@@ -21,7 +21,7 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <spring:message code="actor.confirm.phone" var="confirmPhone" />
-<form:form id="form" action="manager/editcreate.do"  modelAttribute="manager" onsubmit="return checkPhone('${confirmPhone}');">
+<form:form id="form" action="artist/manager/editcreate.do"  modelAttribute="manager" onsubmit="return checkPhone('${confirmPhone}');">
 
 	
 	<form:hidden path="id" />
@@ -34,7 +34,7 @@
 	<acme:textbox code="actor.surname" path="surname" />
 	<br />
 	
-	<acme:textbox code="actor.photo" path="photo" placeholder="https://" />
+	<acme:textbox code="actor.photo" path="photo" placeholder="http:" />
 	<br />
 	
 	<acme:textbox code="actor.email" path="email" />

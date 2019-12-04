@@ -77,32 +77,6 @@
 		</property>
 		<!-- <property name="active" value="true" /> -->
 	</bean>
-	
-	<bean id="userAccount101" class="security.UserAccount">
-		<property name="username" value="administrator1" />
-		<property name="password" value="d5cee333abe432891a0de57d0ee38713" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="ADMIN" />
-				</bean>
-			</list>
-		</property>
-		<!-- <property name="active" value="true" /> -->
-	</bean>
-	
-	<bean id="userAccount102" class="security.UserAccount">
-		<property name="username" value="administrator2" />
-		<property name="password" value="82954495ff7e2a735ed2192c35b2cd00" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="ADMIN" />
-				</bean>
-			</list>
-		</property>
-		<!-- <property name="active" value="true" /> -->
-	</bean>
 
 
 	<!-- UA Managers -->
@@ -272,52 +246,6 @@
 				<ref bean="message2" />
 			</list>
 		</property>
-		<property name="setters">
-		  <list>
-		  </list>
-	    </property>
-	</bean>
-	
-	<bean id="administrator1" class="domain.Administrator">
-		<property name="name" value="Administrator1" />
-		<property name="surname" value="Administrator1" />
-		<property name="photo"
-			value="https://definicion.mx/wp-content/uploads/2014/04/persona.jpg" />
-		<property name="email" value="administrator1@mail.com" />
-		<property name="phoneNumber" value="910290002" />
-		<property name="address" value="Address AD1" />
-		<property name="userAccount" ref="userAccount101" />
-		<property name="messages">
-			<list>
-			</list>
-		</property>
-		<property name="setters">
-		  <list>
-		  		<ref bean="TEST1"/>
-		  		<ref bean="TEST2"/>
-		  </list>
-	    </property>
-	</bean>
-	
-	<bean id="administrator2" class="domain.Administrator">
-		<property name="name" value="Administrator2" />
-		<property name="surname" value="Administrator2" />
-		<property name="photo"
-			value="https://definicion.mx/wp-content/uploads/2014/04/persona.jpg" />
-		<property name="email" value="admin2@mail.com" />
-		<property name="phoneNumber" value="910290322" />
-		<property name="address" value="Address AD" />
-		<property name="userAccount" ref="userAccount102" />
-		<property name="messages">
-			<list>
-			</list>
-		</property>
-		<property name="setters">
-		  <list>
-		  		<ref bean="TEST3"/>
-		  		<ref bean="TEST4"/>
-		  </list>
-	    </property>
 	</bean>
 
 
@@ -903,12 +831,6 @@
 				<ref bean="purchase6" />
 			</list>
 		</property>
-		<property name="setters">
-		  <list>
-		  		<ref bean="TEST1"/>
-		  		<ref bean="TEST2"/>
-		  </list>
-	    </property>
 	</bean>
 
 	<bean id="record2" class="domain.Record">
@@ -934,12 +856,6 @@
 				<ref bean="purchase4" />
 			</list>
 		</property>
-		<property name="setters">
-		  <list>
-		  		<ref bean="TEST3"/>
-		  		<ref bean="TEST4"/>
-		  </list>
-	    </property>
 	</bean>
 
 	<bean id="record3" class="domain.Record">
@@ -964,10 +880,6 @@
 
 			</list>
 		</property>
-		<property name="setters">
-		  <list>
-		  </list>
-	    </property>
 	</bean>
 
 	<bean id="record4" class="domain.Record">
@@ -992,10 +904,6 @@
 				
 			</list>
 		</property>
-		<property name="setters">
-		  <list>
-		  </list>
-	    </property>
 	</bean>
 
 	<bean id="record5" class="domain.Record">
@@ -1017,10 +925,6 @@
 			<list>
 			</list>
 		</property>
-		<property name="setters">
-		  <list>
-		  </list>
-	    </property>
 	</bean>
 
 	<bean id="record6" class="domain.Record">
@@ -1042,10 +946,6 @@
 			<list>
 			</list>
 		</property>
-		<property name="setters">
-		  <list>
-		  </list>
-	    </property>
 	</bean>
 
 	<bean id="record7" class="domain.Record">
@@ -1069,10 +969,6 @@
 				<ref bean="purchase8" />
 			</list>
 		</property>
-		<property name="setters">
-		  <list>
-		  </list>
-	    </property>
 	</bean>
 
 
@@ -1529,43 +1425,6 @@
 		<property name="recipient">
 			<ref bean="manager2" />
 		</property>
-	</bean>
-
-	<!-- TEST -->
-	<bean id="TEST1" class="domain.Setter">
-		<property name="ticker" value="191120#56" />
-		<property name="body" value="TESTbody1" />
-		<property name="picture" value="http://www.pictureTest.com" />
-		<property name="finalMode" value="true" />
-		<property name="tipoColor" value="1" />
-		<property name="publicationMoment" value="11/20/2019 15:08" />
-	</bean>
-
-	<bean id="TEST2" class="domain.Setter">
-		<property name="ticker" value="191010#24" />
-		<property name="body" value="TESTbody2" />
-		<property name="picture" value="http://www.pictureTest2.com" />
-		<property name="finalMode" value="true" />
-		<property name="publicationMoment" value="10/10/2019 20:33" />
-		<property name="tipoColor" value="2" />
-	</bean>
-
-	<bean id="TEST3" class="domain.Setter">
-		<property name="ticker" value="190824#874" />
-		<property name="body" value="TESTbody3" />
-		<property name="picture" value="http://www.pictureTest3.com" />
-		<property name="finalMode" value="true" />
-		<property name="publicationMoment" value="08/24/2019 20:33" />
-		<property name="tipoColor" value="3" />
-	</bean>
-
-	<bean id="TEST4" class="domain.Setter">
-		<property name="ticker" value="190915#1" />
-		<property name="body" value="TESTbody4" />
-		<property name="picture" value="http://www.pictureTest4.com" />
-		<property name="finalMode" value="true" />
-		<property name="publicationMoment" value="09/15/2019 20:33" />
-		<property name="tipoColor" value="3" />
 	</bean>
 
 </beans>

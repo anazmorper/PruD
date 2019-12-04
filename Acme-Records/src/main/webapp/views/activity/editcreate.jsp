@@ -20,7 +20,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form action="manager/workProgramme/activity/editcreate.do"  modelAttribute="activity">
+<form:form action="workProgramme/activity/manager/editcreate.do"  modelAttribute="activity">
 	
 	<form:hidden path="id" />
 	<form:hidden path="version" />
@@ -51,7 +51,7 @@
 	<br/>
 	<acme:submit name="save" code="activity.save"/>
 
-	<acme:cancel url="manager/workProgramme/listMyWorkProgrammes.do" code="activity.cancel" />
+	<acme:cancel url="workProgramme/manager/listMyWorkProgrammes.do" code="activity.cancel" />
 	
 	<br/>
 		

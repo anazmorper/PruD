@@ -49,7 +49,7 @@ public class PersonalDataActorController extends AbstractController {
 			result = new ModelAndView("redirect:/administrator/edit.do?adminId=" + admin.getId());
 		} else if (actor instanceof Manager) {
 			b = managerService.findOneByPrincipal();
-			result = new ModelAndView("redirect:/manager/edit.do?managerId=" + b.getId());
+			result = new ModelAndView("redirect:/artist/manager/edit.do?managerId=" + b.getId());
 		} else if (actor instanceof Customer) {
 			m = customerService.findOneByPrincipal();
 			result = new ModelAndView("redirect:/customer/edit.do?customerId=" + m.getId());
@@ -131,7 +131,7 @@ public class PersonalDataActorController extends AbstractController {
 				result = new ModelAndView("redirect:/administrator/display.do?adminId=" + admin.getId());
 			} else if (actor instanceof Manager) {
 				b = managerService.findOneByPrincipal();
-				result = new ModelAndView("redirect:/manager/display.do?managerId=" + b.getId());
+				result = new ModelAndView("redirect:/artist/manager/display.do?managerId=" + b.getId());
 			} else if (actor instanceof Customer) {
 				m = customerService.findOneByPrincipal();
 				result = new ModelAndView("redirect:/customer/display.do?customerId=" + m.getId());

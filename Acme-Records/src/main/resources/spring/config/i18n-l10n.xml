@@ -37,8 +37,6 @@
 		<value>/views/artist/messages</value>
 		<value>/views/workProgramme/messages</value>
 		<value>/views/activity/messages</value>
-		<value>/views/setter/messages</value>
-		
 		
 	</util:list>
 

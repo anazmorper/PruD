@@ -76,20 +76,5 @@
 	<b><spring:message code="administrator.findTopManager" /> :</b> 
 	<jstl:out value="${findTopManager.name}" />
 </p>
-<p>
-	<b><spring:message code="administrator.findAvgStddevOfTheNumOfSettersPublishedPerRecord" /> :</b> 
-	<jstl:out value="${findAvgStddevOfTheNumOfSettersPublishedPerRecord[0]}" /><jstl:out value=", " />
-	<jstl:out value="${findAvgStddevOfTheNumOfSettersPublishedPerRecord[1]}" />
-</p>
-
-<p>
-	<b><spring:message code="administrator.findRatOfSetterPublished" /> :</b> 
-	<jstl:out value="${findRatOfSetterPublished}" />
-</p>
-
-<p>
-	<b><spring:message code="administrator.findRatOfSetterUnpublished" /> :</b> 
-	<jstl:out value="${findRatOfSetterUnpublished}" />
-</p>
 
 

@@ -21,7 +21,7 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <spring:message code="actor.confirm.phone" var="confirmPhone" />
-<form:form action="manager/edit.do"  modelAttribute="manager" onsubmit="return checkPhone('${confirmPhone}');">
+<form:form action="artist/manager/edit.do"  modelAttribute="manager" onsubmit="return checkPhone('${confirmPhone}');">
 	
 	<form:hidden path="id" />
 	<form:hidden path="version" />

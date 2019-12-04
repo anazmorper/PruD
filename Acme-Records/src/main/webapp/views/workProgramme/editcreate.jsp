@@ -20,7 +20,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form action="manager/workProgramme/editcreate.do"  modelAttribute="workProgramme">
+<form:form action="workProgramme/manager/editcreate.do"  modelAttribute="workProgramme">
 	
 	<form:hidden path="id" />
 	<form:hidden path="version" />
@@ -43,7 +43,7 @@
 
 	<acme:submit name="save" code="workProgramme.save"/>
 
-	<acme:cancel url="manager/workProgramme/listMyWorkProgrammes.do" code="workProgramme.cancel" />
+	<acme:cancel url="workProgramme/manager/listMyWorkProgrammes.do" code="workProgramme.cancel" />
 	
 	<br/>
 		

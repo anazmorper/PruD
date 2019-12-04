@@ -37,7 +37,7 @@
 
 	<spring:message code="record.title" var="titleHeader" />
 	<display:column title="${titleHeader}" sortable="false">
-		<a href="manager/workProgramme/record/display.do?recordId=${row.id}"><jstl:out
+		<a href="workProgramme/record/manager/display.do?recordId=${row.id}"><jstl:out
 				value="${row.title}" /></a>
 	</display:column>
 	
@@ -66,7 +66,7 @@
 	<security:authorize access="hasRole('MANAGER')">
 		<jstl:if test="${(fn:contains(mylist, row)) && (row.finalMode=='false')}">
 			<display:column>
-				<a href="manager/workProgramme/record/edit.do?recordId=${row.id}"><spring:message code="record.edit"/></a>
+				<a href="workProgramme/record/manager/edit.do?recordId=${row.id}"><spring:message code="record.edit"/></a>
 			</display:column>
 		</jstl:if>
 	</security:authorize>
@@ -77,7 +77,7 @@
 	<jstl:if test="${puedeCrear=='true'}">
 		<security:authorize access="hasRole('MANAGER')">
 			<div>
-				<a href="manager/workProgramme/record/create.do"> <spring:message
+				<a href="workProgramme/record/manager/create.do"> <spring:message
 						code="record.create" />
 				</a>
 			</div>

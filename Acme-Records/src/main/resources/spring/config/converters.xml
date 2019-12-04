@@ -32,8 +32,6 @@
 	<bean class="converters.WorkProgrammeToStringConverter" />
 	<bean class="converters.ActivityToStringConverter" />
 	<bean class="converters.ArtistToStringConverter" />
-	<bean class="converters.SetterToStringConverter" />
-	
 
 	
 	<bean class="converters.StringToActorConverter" />
@@ -50,7 +48,6 @@
 	<bean class="converters.StringToWorkProgrammeConverter" />
 	<bean class="converters.StringToActivityConverter" />
 	<bean class="converters.StringToArtistConverter" />
-	<bean class="converters.StringToSetterConverter" />
 	</util:list>
 	
 </beans>
